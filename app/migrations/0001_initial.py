@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('link', models.CharField(max_length=150)),
                 ('nota', models.FloatField(max_length=2)),
                 ('genero', models.CharField(choices=[('A', 'Action'), ('D', 'Drama'), ('C', 'Comedy'), ('R', 'Romance'), ('H', 'Horror')], max_length=50)),
-                ('filme', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='PUCMais.topmovie')),
+                ('filme', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.topmovie')),
             ],
         ),
     ]

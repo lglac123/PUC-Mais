@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from PUCMais import views
+from app import views
 
 urlpatterns = [
     path("users/signin/", views.createUser),
