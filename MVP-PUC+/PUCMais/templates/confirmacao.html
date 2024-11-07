@@ -1,0 +1,22 @@
+<head>
+
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Red Piu-Piu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  </head>
+  
+  <h1>
+  Tem certeza que deseja remover "{{top_movie.nome}}"?
+  </h1>
+  
+  <form class="montserrat central" method="post">
+    {% csrf_token %}
+    <input class="button1" type="submit" name="confirm" value="Sim">&emsp;
+    <input class="button2" type="submit" value="Não">
+  </form>

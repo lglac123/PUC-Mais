@@ -1,0 +1,75 @@
+<head>
+
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Red Piu-Piu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  </head>
+  
+  <h1>{{ type }} Filme</h1>
+  
+
+  <form class="montserrat" method="post">
+    {% csrf_token %}
+    <div class="central">
+      <label for="filme">Lista: &nbsp;</label>
+      <select name="filme" id="filme">
+          <option value="">--Selecione uma Lista--</option>
+          {% for top_movie in top_movies %}
+              <option value="{{ top_movie.id }}">{{ top_movie.nome }}</option>
+          {% endfor %}
+      </select>
+    </div>
+
+    <br>
+
+    <div class="central">
+      <label>
+        Nome do Filme: &nbsp;
+      </label>
+      <input name="nome" value="{{Movie.nome}}">
+    </div>
+  
+    <br>
+
+    <div class="central">
+      <label>
+        Link do IMDB: &nbsp;
+      </label>
+      <input name="link" value = "{{Movie.link}}">
+    </div>
+  
+    <br>
+  
+    <div class="central">
+      <label>
+        Sua Nota: &nbsp;
+      </label>
+      <input type="number" step="0.1" name="nota" value="{{Movie.nota}}">
+    </div>
+  
+    <br>
+    
+    <div class="central">
+      <label for="genero">Gênero: &nbsp;</label>
+      <select name="genero" id="genero">
+        <option value="">--Escolha um Gênero--</option>
+        <option value="A">Ação</option>
+        <option value="D">Drama</option>
+        <option value="C">Comédia</option>
+        <option value="R">Romance</option>
+        <option value="H">Terror</option>
+      </select>
+    </div>
+  
+    <br>
+    
+    <input class="button1 central" type="submit" value="Confirmar">
+  
+  </form>
+  

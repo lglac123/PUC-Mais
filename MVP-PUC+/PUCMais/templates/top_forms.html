@@ -1,0 +1,76 @@
+<head>
+
+    {% load static %}
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Red Piu-Piu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  </head>
+  
+  <h1>{{ type }} Sequência Top Filmes</h1>
+  
+  
+  <form class="montserrat" method="post">
+    {% csrf_token %}
+    <div class="central">
+      <label>
+        Nome: &nbsp;
+      </label>
+      <input name="nome" value="{{TopMovie.nome}}">
+    </div>
+  
+    <br>
+  
+    <div class="central">
+      <label>
+        Ícone: &nbsp;
+      </label>
+      <input name="icone" value="{{TopMovie.icone}}">
+    </div>
+  
+    <br>
+    
+    <div class="central">
+      <label>
+        Descrição: &nbsp;
+      </label>
+      <input name="descricao" value="{{TopMovie.descricao}}">
+    </div>
+  
+    <br>
+    
+    <div class="central">
+      <label>
+        Idade: &nbsp;
+      </label>
+      <input type="number" name="idade" value="{{TopMovie.idade}}">
+    </div>
+  
+    <br>
+    
+  <div class="central">
+      <label>
+        Sexo: &nbsp;
+      </label>
+      <input name="sexo" value="{{TopMovie.sexo}}">
+    </div>
+  
+    <br>
+    
+    <div class="central">
+      <label>
+        Data de Nascimento: &nbsp;
+      </label>
+      <input type="date" name="data_nascimento" value="{{TopMovie.data_nascimento}}">
+    </div>
+  
+    <br>
+    
+    <input class="button1 central" type="submit" value="Confirmar">
+  
+  </form>
+  
