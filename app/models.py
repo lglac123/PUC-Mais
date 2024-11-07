@@ -26,7 +26,7 @@ class UserCourse(models.Model):
 
 class Exam(models.Model):
   semester = models.IntegerField(default=1)
-  year = models.IntegerField(max_digits=2)
+  year = models.IntegerField()
   name = models.CharField(max_length=30)
   file = models.FileField()
   courses = models.ManyToManyField(Course)
