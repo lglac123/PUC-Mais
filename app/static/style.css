@@ -1,13 +1,8 @@
-html {height: 100%; width: 100%;}
+html {height: 100%; width: 100%}
   
-body {
-  font-family: "Montserrat";
-  background-color: white;
-  color: black;
-  margin: 0px;
-}
+body {font-family: "Montserrat"; background-color: white; color: black; margin: 0px}
 
-h1 {color: Black; text-align: center; padding-top: 30px; padding-bottom: 10px;}
+h1 {color: Black; text-align: center; padding: 15px}
 
 .navbar {
   background-color: lightgray; 
@@ -26,37 +21,22 @@ h1 {color: Black; text-align: center; padding-top: 30px; padding-bottom: 10px;}
   font-size: 17px;
 }
 
-.navbar a:hover {background-color: darkslategray; color: white;}
+.navbar a:hover {background-color: darkslategray; color: white}
+
+.userbar {
+  background-color: lightgray;
+  font-size: 16px;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
 
 .p1 {
   text-align: center;
   border-style: solid;
   border-color: white;
   margin-bottom: 20px;
-}
-
-.t1 {
-  table{  
-      border: 1px solid #ddd;
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-      border-collapse: collapse;
-    th, td {
-      width: 320px;
-      height: 20px;
-      padding: 15px;
-    }
-}
-
-.t0 {
-  background-color: black;
-  color: white;
-}
-.t3 {
-  background-color: white;
-  color: black;
 }
 
 .central {
@@ -72,10 +52,7 @@ h1 {color: Black; text-align: center; padding-top: 30px; padding-bottom: 10px;}
   align-items: left;
 }
 
-.log {
-  font-size: 10px;
-  color: black;
-}
+.log {font-size: 10px; color: black}
 
 .loginbutton {
   background-color: gray;
@@ -170,4 +147,28 @@ h1 {color: Black; text-align: center; padding-top: 30px; padding-bottom: 10px;}
   background-color: white; 
   color: black; 
   padding: 5px; 
+}
+
+.t1 {
+  table{  
+      border: 1px solid #ddd;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+      border-collapse: collapse;
+    th, td {
+      width: 320px;
+      height: 20px;
+      padding: 15px;
+    }
+}
+
+.t0 {
+  background-color: black;
+  color: white;
+}
+.t3 {
+  background-color: white;
+  color: black;
 }
