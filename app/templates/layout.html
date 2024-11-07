@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="{% static 'style.css' %}" rel="stylesheet">
+        <title>{{ titulo }}</title> <!-- Passar como um parâmetro ao carregar a página -->
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="/">Home</a>
+            <a href="/provas/">Provas Antigas</a>
+            <a href="/aulas/">Aulas</a>
+            <a style="float: right" href="/users/logout/">Sair</a>
+        </div>
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
+    </body>
+</html>
