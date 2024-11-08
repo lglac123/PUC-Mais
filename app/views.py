@@ -6,7 +6,10 @@ from django.contrib.auth.decorators import login_required
 
 
 def disciplinas(request):
-  return render(request, 'Disciplina.html')
+  return render(request, 'disciplinas.html')
+
+def Disciplina(request):
+  return render(request,'Disciplina.html')
 
 def home(request):
   return render(request, 'home.html')
