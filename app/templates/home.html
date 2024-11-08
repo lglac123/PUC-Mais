@@ -1,6 +1,10 @@
-{% "layout.html" %}
+{% extends "layout.html" %}
 
 {% load static %}
+
+{% block titulo %}
+  Home
+{% endblock %}
 
 {% block main %}
   <div class="userbar">
@@ -36,63 +40,3 @@
     <a class="button1" href="/users/signin/">Contato</a>
   </div>
 {% endblock %}
-
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-  {% load static %}
-  <link href="{% static 'style.css' %}" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Home</title>
-  <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">  
-</head>
-
-<body>
-
-<div class="navbar">
-  <a href="/">Home</a>
-  <a href="/provas/">Provas</a>
-  <a href="/disciplinas/">Disciplinas</a>
-  <a href="/aulas/">Minha Página</a>
-  <a style="float: right" href="/users/logout/">Sair</a>
-</div>
-
-<div class="userbar">
-  {% if request.user.is_authenticated %}
-  Bem-Vindo, {{request.user.username}}!
-  {% endif %}
-</div>
-
-<img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
-
-<div class="background">
-  <div class="p1">
-  <p style="font-weight: bold; font-size: 24px; text-align: center">Sobre Nós</p>
-  <p style="justify-content: center">
-    Focados em alcançar a excelência e o máximo proveito dos ensejos na universidade, 5 graduandos de engenharia 
-    enxergaram nos percalços deste trajeto uma oportunidade de revolucionar a forma de estudos da PUC-Rio. 
-    Assim, para facilitar a vida dos filhos da PUC, o grupo de amigos desenvolveu esta plataforma que, por enquanto,
-    é direcionada aos alunos do CBCTC.
-  </p>
-  </div>
-</div>
-
-<p style="text-align: center; font-weight: bold; font-size: 24px; margin-top: 120px">
-  Assista ao vídeo abaixo para saber mais sobre o nosso projeto:
-</p>
-  <iframe class="central" style="border: 10px solid black; border-radius: 5px" width="600" height="480" 
-  src="https://www.youtube.com/embed/neNw5m9eUjA" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
-  autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<div class="horizontal">
-  <a class="button1" href="/aulas/">Cursos</a>
-  <a class="button1" href="/users/signin/">Cadastrar</a>
-  <a class="button1" href="/users/signin/">Contato</a>
-</div>
-
-</body>
-
-</html> -->

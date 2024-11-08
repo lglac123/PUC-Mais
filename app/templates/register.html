@@ -1,54 +1,53 @@
-<head>
+{% extends "layout.html" %}
 
-  {% load static %}
-  <link href="{% static 'style.css' %}" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Cadastro</title>
-  <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">  
-</head>
- 
-<div class="central" style="flex-direction: column">
-<h1>Novo Usuário</h1>
-  
-<form style="font-family: Montserrat; padding: 20px" method="post">
-  {% csrf_token %}
-  <div class="central">
-    <label>
-      <b>Nome: </b>&nbsp;
-    </label>
-    <input type="text" name="username">
+{% load static %}
+
+{% block titulo %}
+  Cadastro
+{% endblock %}
+
+{% block main %}
+  <div class="central" style="flex-direction: column">
+    <h1>Novo Usuário</h1>
+    
+    <form style="font-family: Montserrat; padding: 20px" method="post">
+      {% csrf_token %}
+      <div class="central">
+        <label>
+          <b>Nome: </b>&nbsp;
+        </label>
+        <input type="text" name="username">
+      </div>
+    
+      <br>
+    
+      <div class="central">
+        <label>
+          <b>Email: </b>&nbsp;
+        </label>
+        <input type="email" name="email">
+      </div>
+    
+      <br>
+    
+      <div class="central">
+          <label>
+            <b>Senha: </b>&nbsp;
+          </label>
+          <input type="password" name="password">
+        </div>
+    
+      <br>
+      
+      <p class="central" style="font-size: 12px"> 
+        Já possui conta? 
+        &nbsp; <a class="slink_button" href="/users/login/">Login</a>
+      </p>
+    
+      <br>
+    
+      <input class="loginbutton central" type="submit" value="Cadastrar">
+    
+    </form>
   </div>
-
-  <br>
-
-  <div class="central">
-    <label>
-      <b>Email: </b>&nbsp;
-    </label>
-    <input type="email" name="email">
-  </div>
-
-  <br>
-
-  <div class="central">
-      <label>
-        <b>Senha: </b>&nbsp;
-      </label>
-      <input type="password" name="password">
-    </div>
-
-  <br>
-  
-  <p class="central" style="font-size: 12px"> 
-    Já possui conta? 
-    &nbsp; <a class="slink_button" href="/users/login/">Login</a>
-  </p>
-
-  <br>
-
-  <input class="loginbutton central" type="submit" value="Cadastrar">
-
-</form>
-</div>
+{% endblock %}
