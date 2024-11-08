@@ -30,7 +30,7 @@ class Exam(models.Model):
   name = models.CharField(max_length=30)
   file = models.FileField()
   courses = models.ManyToManyField(Course)
-  video = models.OneToOneField('Video', on_delete=models.CASCADE, blank=True)
+  video = models.OneToOneField('Video', on_delete=models.CASCADE, blank=True, null=True)
 
 
 class Topic(models.Model):
