@@ -1,4 +1,50 @@
-<head>
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block main %}
+  <div class="central">
+    <img style="width: 400px; margin-top:20px; margin-bottom: 30px" src="{% static "LogoPUCMais.png" %}">
+  </div>  
+
+  <form style="font-family: Montserrat" method="post">
+    {% csrf_token %}
+    <div style="display: flex; justify-content: center; align-items: left; margin: auto;">
+      <label>
+        <b>Usuário: </b>&nbsp;
+      </label>
+      <input type="text" name="username">
+
+    &emsp;
+
+        <label>
+          <b>Senha: </b>&nbsp;
+        </label>
+        <input type="password" name="password">
+      </div>
+
+    <br>
+
+    {% if error_msg %}
+      <div class="central" style="color: red">
+        {{ error_msg }}
+      </div>
+      <br>
+    {% endif %}
+
+    <p class="central" style="font-size: 12px"> 
+      Não possui conta? 
+      &nbsp; <a class="slink_button" href="/users/signin/">Cadastrar</a>
+    </p>
+
+    <br> 
+
+    <input class="loginbutton central" type="submit" value="Entrar">
+
+  </form>
+{% endblock %}
+
+<!-- <head>
   {% load static %}
   <link href="{% static 'style.css' %}" rel="stylesheet">
   <meta charset="utf-8">
@@ -47,4 +93,4 @@
     <input class="loginbutton central" type="submit" value="Entrar">
   
   </form>
-  
+   -->

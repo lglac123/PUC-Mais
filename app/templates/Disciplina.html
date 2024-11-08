@@ -1,4 +1,30 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block main %}
+    <div class="section">
+        MATÉRIA
+    </div>
+    <img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+
+    <div class="horizontal">
+        <div class="section wide-section">
+            <p style="font-weight: bold; font-size: 24px; text-align: center">Básico</p>
+            <div style="justify-content: center;">Aprenda sobre todos os tópicos da disciplinas por meio de videoaulas e listas de exercícios, para que você fique com 10 na matéria! </div>
+        </div>
+        <div class="section wide-section">
+            <p style="font-weight: bold; font-size: 24px; text-align: center">Avançado</p>
+            <div style="justify-content: center;">Se desafie ao aprender tópicos não ensinados nas aulas e amplie seus conhecimentos de forma independente!</div>
+        </div>
+    </div>
+
+    <div class="section retangulinho">
+        Provas Antigas
+    </div>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -20,29 +46,27 @@
   <a href="/aulas/">Minha Página</a>
   <a style="float: right" href="/users/logout/">Sair</a>
 </div>
-</head>
-<body>
 
-    <div class="section">
-        MATÉRIA
-    </div>
-    <img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+<div class="section">
+    MATÉRIA
+</div>
+<img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
 
-    <div class="horizontal">
-        <div class="section wide-section">
-            <p style="font-weight: bold; font-size: 24px; text-align: center">Básico</p>
-            <div style="justify-content: center;">Aprenda sobre todos os tópicos da disciplinas por meio de videoaulas e listas de exercícios, para que você fique com 10 na matéria! </div>
-        </div>
-        <div class="section wide-section">
-            <p style="font-weight: bold; font-size: 24px; text-align: center">Avançado</p>
-            <div style="justify-content: center;">Se desafie ao aprender tópicos não ensinados nas aulas e amplie seus conhecimentos de forma independente!</div>
-        </div>
+<div class="horizontal">
+    <div class="section wide-section">
+        <p style="font-weight: bold; font-size: 24px; text-align: center">Básico</p>
+        <div style="justify-content: center;">Aprenda sobre todos os tópicos da disciplinas por meio de videoaulas e listas de exercícios, para que você fique com 10 na matéria! </div>
     </div>
-    
-    <div class="section retangulinho">
-        Provas Antigas
+    <div class="section wide-section">
+        <p style="font-weight: bold; font-size: 24px; text-align: center">Avançado</p>
+        <div style="justify-content: center;">Se desafie ao aprender tópicos não ensinados nas aulas e amplie seus conhecimentos de forma independente!</div>
     </div>
 </div>
 
+<div class="section retangulinho">
+    Provas Antigas
+</div>
+
+
 </body>
-</html>
+</html> -->
