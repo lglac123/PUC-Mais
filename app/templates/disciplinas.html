@@ -1,4 +1,45 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block main %}
+    <h3></h3>
+    <h1>Disciplinas oferecidas</h1>
+
+    <img class="central" style="width: 300px; padding: 20px 0px 40px 0px" src="{% static 'LogoPUCMais.png' %}">
+    `
+    <div class="divretangulo">
+        <div class="retanguloGrande">
+            <div class="linhaDisciplinas">
+                <div class="disciplina">
+                    <a href="/Disciplina/">Calculo a uma variável</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+
+                <div class="disciplina">
+                    <a href="/Disciplina/">Modelagem e programação</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+            </div>
+
+            <h5></h5>
+
+            <div class="linhaDisciplinas">
+                <div class="disciplina">
+                    <a href="/Disciplina/">Calculo a várias variáveis I</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+
+                <div class="disciplina">
+                    <a href="/Disciplina/">Programação em C</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1></h1>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -59,4 +100,4 @@
 </body>
 
 
-</html>
+</html> -->
