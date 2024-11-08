@@ -8,9 +8,6 @@ from django.contrib.auth.decorators import login_required
 def disciplinas(request):
   return render(request, 'Disciplina.html')
 
-def perfil(request):
-  return render(request,'perfil.html')
-
 def home(request):
   return render(request, 'home.html')
 
