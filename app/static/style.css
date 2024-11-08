@@ -1,24 +1,76 @@
-html {height: 100%; width: 100%}
+html {
+  height: 100%; 
+  width: 100%
+}
   
-body {font-family: "Montserrat"; background-color: white; color: black; margin: 0px}
+body {
+  font-family: "Montserrat"; 
+  background-color: white;
+  color: black; 
+  margin: 0px;
+}
 
-h1 {color: Black; text-align: center; padding: 15px}
+h1 {
+  color: Black; 
+  text-align: center; 
+  padding: 15px;
+}
 
-.navbar {background-color: lightgray; overflow: hidden; position: sticky; top: 0; box-shadow: 0px 2px 4px darkgray}
+.navbar {
+  background-color: lightgray; 
+  overflow: hidden; 
+  position: sticky; 
+  top: 0; 
+  box-shadow: 0px 2px 4px darkgray;
+}
 
-.navbar a {float: left; color: black; text-align: center; padding: 12px 14px; text-decoration: none; font-size: 17px}
+.navbar a {
+  float: left; 
+  color: black; 
+  text-align: center; 
+  padding: 12px 14px; 
+  text-decoration: none; 
+  font-size: 17px;
+}
 
-.navbar a:hover {background-color: darkslategray; color: white}
+.navbar a:hover {
+  background-color: darkslategray; 
+  color: white;
+}
 
-.userbar {background-color: lightgray; font-size: 16px; text-align: center; margin: 20px; padding: 10px; border-radius: 5px}
+.userbar {
+  background-color: lightgray; 
+  font-size: 16px; 
+  text-align: center; 
+  margin: 20px; 
+  padding: 10px; 
+  border-radius: 5px;
+}
 
-.background {margin: 20px 200px; background-color: lightgray; border-radius:10px}
+.background {
+  margin: 20px 200px; 
+  background-color: lightgray; 
+  border-radius:10px;
+}
 
-.p1 {text-align: justify; padding: 10px 50px 20px 50px}
+.p1 {
+  text-align: justify; 
+  padding: 10px 50px 20px 50px;
+}
 
-.central {display: flex; justify-content: center; align-items: center; margin: auto}
+.central {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: auto;
+}
 
-.horizontal {display: flex; justify-content: space-evenly; padding: 50px; margin: 0px 200px;}
+.horizontal {
+  display: flex; 
+  justify-content: space-evenly; 
+  padding: 50px; 
+  margin: 0px 200px;
+}
 
 .sectionrectangle {
   height: 250px; width: 250px;
@@ -55,11 +107,23 @@ h1 {color: Black; text-align: center; padding: 15px}
   font-family: "Montserrat";
 }
 
-.button1:hover {background-color: darkslategray; color: white; transition-duration: 0.3s}
+.button1:hover {
+  background-color: darkslategray; 
+  color: white; 
+  transition-duration: 0.3s;
+}
 
-.slink_button {color: blue; text-decoration: none; font-size: 12px}
+.slink_button {
+  color: blue; 
+  text-decoration: none; 
+  font-size: 12px;
+}
 
-.slink_button:hover {color: darkblue; text-decoration: underline; transition-duration: 0.2s}
+.slink_button:hover {
+  color: darkblue; 
+  text-decoration: underline; 
+  transition-duration: 0.2s;
+}
 
 .button2 {
   background-color: white;
@@ -71,7 +135,11 @@ h1 {color: Black; text-align: center; padding: 15px}
   font-family: "Montserrat";
 }
 
-.button2:hover {background-color: red; color: white; transition-duration: 0.3s}
+.button2:hover {
+  background-color: red; 
+  color: white; 
+  transition-duration: 0.3s;
+}
 
 .button3 {
   background-color: white;
@@ -86,7 +154,11 @@ h1 {color: Black; text-align: center; padding: 15px}
   margin: auto;
 }
 
-.button3:hover {background-color: orange; color: white; transition-duration: 0.3s}
+.button3:hover {
+  background-color: orange; 
+  color: white; 
+  transition-duration: 0.3s;
+}
 
 .classborder {
   background-color: black;
@@ -103,13 +175,47 @@ h1 {color: Black; text-align: center; padding: 15px}
   line-height: 40px;
 }
 
-.title {color: white; font-size: 20px}
+.title {
+  color: white; 
+  font-size: 20px;
+}
 
-.subtitle {color: white; font-size: 16px}
+.subtitle {
+  color: white; 
+  font-size: 16px;
+}
+
+.section {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  background-color: lightgray;
+}
+
+.wide-section {
+  flex: 1;
+  margin: 0 10px; 
+  height: 300px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.retangulinho {
+  width: 200px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: lightgray;
+  border-radius: 10px;
+  text-align: center;
+}
 
 
 /* CSS antigo */
-.t1 {
+/* .t1 {
   table{  
       border: 1px solid #ddd;
       text-align: center;
@@ -137,4 +243,4 @@ h1 {color: Black; text-align: center; padding: 15px}
   background-color: white; 
   color: black; 
   padding: 5px; 
-}
+} */
