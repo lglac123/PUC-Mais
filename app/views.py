@@ -3,13 +3,24 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from .models import Course, Topic
 
 
 def disciplinas(request):
-  return render(request, 'disciplinas.html')
+  courses = Course.objects.all()
+  return render(request, 'disciplinas.html', {
+    'courses': courses,
+  })
 
-def Disciplina(request):
-  return render(request,'Disciplina.html')
+
+def Disciplina(request, course_name):
+  course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
+  topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
+
+  return render(request,'Disciplina.html', {
+    'topic': topic,
+    'course': course,
+  })
 
 def home(request):
   return render(request, 'home.html')
