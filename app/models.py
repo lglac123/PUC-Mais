@@ -6,6 +6,7 @@ from django.db.models.deletion import CASCADE
 class Course(models.Model):
   name = models.CharField(max_length=40)
   dificulty = models.IntegerField(default=0)
+  # Adicionar imagem
   # A relação com a prova já está sendo descrito no ManyToMany do Exam
 
   def __str__(self):
@@ -62,5 +63,5 @@ class Option(models.Model):
   text = models.TextField()
 
 class Answer(models.Model):
-  question = models.ForeignKey(Question, on_delete = models.CASCADE)
+  question = models.ForeignKey(Question, on_delete = models.CASCADE) # Depois
   text = models.TextField()
