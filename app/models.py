@@ -55,6 +55,12 @@ class List(models.Model):
 
 class Question(models.Model):
   task = models.TextField()
-  options = models.TextField() # @ separa as respostas para exibir. Usar o split do python
-  answer = models.CharField(max_length=50)
   list = models.ManyToManyField('List')
+
+class Option(models.Model):
+  question = models.ManyToManyField(Question)
+  text = models.TextField()
+
+class Answer(models.Model):
+  question = models.ForeignKey(Question, on_delete = models.CASCADE)
+  text = models.TextField()
