@@ -125,41 +125,6 @@ h1 {
   transition-duration: 0.2s;
 }
 
-.button2 {
-  background-color: white;
-  border-radius: 6px;
-  color: black;
-  padding: 10px 24px;
-  text-decoration: none;
-  font-size: 16px;
-  font-family: "Montserrat";
-}
-
-.button2:hover {
-  background-color: red; 
-  color: white; 
-  transition-duration: 0.3s;
-}
-
-.button3 {
-  background-color: white;
-  border-radius: 6px;
-  color: black;
-  padding: 10px 24px;
-  text-decoration: none;
-  font-size: 16px;
-  font-family: "Montserrat";
-  width: 190px;
-  text-align: center;
-  margin: auto;
-}
-
-.button3:hover {
-  background-color: orange; 
-  color: white; 
-  transition-duration: 0.3s;
-}
-
 .classborder {
   background-color: black;
   border-radius: 10px;
@@ -256,34 +221,35 @@ h1 {
   align-items: center;
 }
 
-
-/* CSS antigo */
-/* .t1 {
-  table{  
-      border: 1px solid #ddd;
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-      border-collapse: collapse;
-    th, td {
-      width: 320px;
-      height: 20px;
-      padding: 15px;
-    }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color:lightgray;
+  border: 3px solid black;
+  border-radius: 20px;
+  width: 800px;
+  margin: 5px auto;
+  padding: 5px;
+  & card {
+    flex: 0 1 300px;
+  }
 }
 
-.t0 {
-  background-color: black;
-  color: white;
+.card {
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 5px 20px;
+  background-color: gray;
+  place-items: center;
+  align-items: center;
+  margin: 5px auto;
+  & img {
+    height: 100px;
+    max-width: 300px;
+  }
+  & a {
+    text-decoration: none;
+    color: black;
+    margin: 5px 0;
+  }
 }
-.t3 {
-  background-color: white;
-  color: black;
-}
-
-.rating {
-  background-color: white; 
-  color: black; 
-  padding: 5px; 
-} */

@@ -1,62 +1,56 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layout.html' %}
 
-<head>
-  {% load static %}
-  <link href="{% static 'style.css' %}" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Aulas</title>
-  <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">  
-</head>
+{% load static %}
 
-<body>
+{% block titulo %}
+    Disciplinas
+{% endblock %}
 
-<div class="navbar">
-    <a href="/">Home</a>
-    <a href="/provas/">Provas Antigas</a>
-    <a href="/aulas/">Aulas</a>
-    <a style="float: right" href="/users/logout/">Sair</a>
-</div>
-<h3></h3>
-<h1>Disciplinas oferecidas</h1>
+{% block main %}
+    <h3></h3>
+    <h1>Disciplinas oferecidas</h1>
 
-<img class="central" style="width: 300px; padding: 20px 0px 40px 0px" src="{% static 'LogoPUCMais.png' %}">
-`
-<div class="divretangulo">
-<div class="retanguloGrande">
-    <div class="linhaDisciplinas">
-        <div class="disciplina">
-            <a href="/Disciplina/">Calculo a uma variável</a>
-            <div class="progresso"><h6>0%</h6></div>
-        </div>
+    <img class="central" style="width: 300px; padding: 20px 0px 40px 0px" src="{% static 'LogoPUCMais.png' %}">
 
-        <div class="disciplina">
-            <a href="/Disciplina/">Modelagem e programação</a>
-            <div class="progresso"><h6>0%</h6></div>
+    <div class="container">
+        {% for course in courses %}
+            <div class="card">
+                <img src="{{ course.image }}" alt="Imagem da disciplina {{ course.name }}">
+                <div class="central">
+                    <a class="button1" href="{{ course.name }}">{{ course.name }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    `
+    <!-- <div class="divretangulo">
+        <div class="retanguloGrande">
+            <div class="linhaDisciplinas">
+                <div class="disciplina">
+                    <a href="/Disciplina/">Calculo a uma variável</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+
+                <div class="disciplina">
+                    <a href="/Disciplina/">Modelagem e programação</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+            </div>
+
+            <h5></h5>
+
+            <div class="linhaDisciplinas">
+                <div class="disciplina">
+                    <a href="/Disciplina/">Calculo a várias variáveis I</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+
+                <div class="disciplina">
+                    <a href="/Disciplina/">Programação em C</a>
+                    <div class="progresso"><h6>0%</h6></div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <h5></h5>
-
-    <div class="linhaDisciplinas">
-        <div class="disciplina">
-            <a href="/Disciplina/">Calculo a várias variáveis I</a>
-            <div class="progresso"><h6>0%</h6></div>
-        </div>
-
-        <div class="disciplina">
-            <a href="/Disciplina/">Programação em C</a>
-            <div class="progresso"><h6>0%</h6></div>
-        </div>
-    </div>
-</div>
-</div>
-<h1></h1>
-
-
-</body>
-
-
-</html>
+    <h1></h1> -->
+{% endblock %}

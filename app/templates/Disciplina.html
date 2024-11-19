@@ -1,66 +1,21 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  {% load static %}
-  <link href="{% static 'style.css' %}" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Home</title>
-  <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">  
-</head>
+{% load static %}
 
-<body>
+{% block titulo %}
+    Disciplina
+{% endblock %}
 
-<div class="navbar">
-  <a href="/">Home</a>
-  <a href="/provas/">Provas</a>
-  <a href="/disciplinas/">Disciplinas</a>
-  <a href="/aulas/">Minha Página</a>
-  <a style="float: right" href="/users/logout/">Sair</a>
-</div>
-<style>
-    .section {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 20px;
-        text-align: center;
-        background-color: lightgray;
-    }
-    .wide-section {
-        flex: 1;
-        margin: 0 10px; 
-        height: 300px; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .horizontal {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-        margin: 0 50px; 
-    }
-    .retangulinho {
-        width: 200px;
-        margin: 20px auto;
-        padding: 15px;
-        background-color: lightgray;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-</style>
-</head>
-<body>
-
+{% block main %}
     <div class="section">
         MATÉRIA
     </div>
     <img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+
+    <div class="container">
+        
+    </div>
+
 
     <div class="horizontal">
         <div class="section wide-section">
@@ -72,11 +27,8 @@
             <div style="justify-content: center;">Se desafie ao aprender tópicos não ensinados nas aulas e amplie seus conhecimentos de forma independente!</div>
         </div>
     </div>
-    
+
     <div class="section retangulinho">
         Provas Antigas
     </div>
-</div>
-
-</body>
-</html>
+{% endblock %}

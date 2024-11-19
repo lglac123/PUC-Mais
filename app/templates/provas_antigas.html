@@ -1,57 +1,40 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  {% load static %}
-  <link href="{% static 'style.css' %}" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Provas Antigas</title>
-  <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">  
-</head>
+{% load static %}
 
-<body>
+{% block titulo %}
+  Provas Antigas
+{% endblock %}
 
-<div class="navbar">
-    <a href="/">Home</a>
-    <a href="/provas/">Provas Antigas</a>
-    <a href="/aulas/">Aulas</a>
-    <a style="float: right" href="/users/logout/">Sair</a>
-</div>
+{% block main %}
+  <h1>Provas Anteriores</h1>
 
-<h1>Provas Anteriores</h1>
+  <img class="central" style="width: 500px;padding: none" src="{% static 'LogoNome.png' %}">
 
-<img class="central" style="width: 500px;padding: none" src="{% static 'LogoNome.png' %}">
+  <div class="p1">
+    <p>Bem-vindo ao MVP da PUC+, uma plataforma de estudos de alunos da PUC-Rio, para alunos da PUC-Rio</p>
+    <p>Ainda em fase de teste, esta plataforma é direcionada a alunos do CBCTC</p>
+  </div>
 
-<div class="p1">
-  <p>Bem-vindo ao MVP da PUC+, uma plataforma de estudos de alunos da PUC-Rio, para alunos da PUC-Rio</p>
-  <p>Ainda em fase de teste, esta plataforma é direcionada a alunos do CBCTC</p>
-</div>
-
-<div class="classborder">
-<ol>
-  {% for tmovie in top_movie %}
-    <li class="title">
-      Top Filmes {{tmovie.nome}} &nbsp; <a class="button1" href="/top_movie/update/{{ tmovie.id }}">Atualizar</a> 
-      &nbsp; <a class="button2" href="top_movie/delete/{{ tmovie.id }}">Remover</a>
-      {% for movie in tmovie.movie_set.all %}
-      <ul class="subtitle">
-        {{tmovie.icone}} &nbsp; 
-        <a style="text-decoration: none; color: white" href="{{movie.link}}" target="_blank">{{movie.nome}}</a> 
-        &emsp; - &emsp; Nota: &nbsp;{{movie.nota}}
-      </ul>
+  <div class="classborder">
+    <ol>
+      {% for tmovie in top_movie %}
+        <li class="title">
+          Top Filmes {{tmovie.nome}} &nbsp; <a class="button1" href="/top_movie/update/{{ tmovie.id }}">Atualizar</a> 
+          &nbsp; <a class="button2" href="top_movie/delete/{{ tmovie.id }}">Remover</a>
+          {% for movie in tmovie.movie_set.all %}
+          <ul class="subtitle">
+            {{tmovie.icone}} &nbsp; 
+            <a style="text-decoration: none; color: white" href="{{movie.link}}" target="_blank">{{movie.nome}}</a> 
+            &emsp; - &emsp; Nota: &nbsp;{{movie.nota}}
+          </ul>
+          {% endfor %}
+        </li>
       {% endfor %}
-    </li>
-  {% endfor %}
-  <br>
-    <a class="button3" href='/top_movie/new' style="text-decoration: none; color: black; margin-left: 70px">Adicionar Pessoa</a>
-    &emsp;
-    <a class="button3" href='/movie/new' style="text-decoration: none; color: black; ">Adicionar Filme</a>
-</ol>
-</div>
-
-</body>
-
-
-</html>
+      <br>
+        <a class="button3" href='/top_movie/new' style="text-decoration: none; color: black; margin-left: 70px">Adicionar Pessoa</a>
+        &emsp;
+        <a class="button3" href='/movie/new' style="text-decoration: none; color: black; ">Adicionar Filme</a>
+    </ol>
+  </div>
+{% endblock %}

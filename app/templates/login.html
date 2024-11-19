@@ -1,17 +1,16 @@
-<head>
-  {% load static %}
-  <link href="{% static 'style.css' %}" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Login</title>
-  <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">  
-</head>
-  
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block titulo %}
+  Login
+{% endblock %}
+
+{% block main %}
   <div class="central">
     <img style="width: 400px; margin-top:20px; margin-bottom: 30px" src="{% static "LogoPUCMais.png" %}">
   </div>  
-  
+
   <form style="font-family: Montserrat" method="post">
     {% csrf_token %}
     <div style="display: flex; justify-content: center; align-items: left; margin: auto;">
@@ -19,7 +18,7 @@
         <b>Usuário: </b>&nbsp;
       </label>
       <input type="text" name="username">
-  
+
     &emsp;
 
         <label>
@@ -45,6 +44,6 @@
     <br> 
 
     <input class="loginbutton central" type="submit" value="Entrar">
-  
+
   </form>
-  
+{% endblock %}

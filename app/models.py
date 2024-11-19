@@ -6,6 +6,7 @@ from django.db.models.deletion import CASCADE
 class Course(models.Model):
   name = models.CharField(max_length=40)
   dificulty = models.IntegerField(default=0)
+  # Adicionar imagem
   # A relação com a prova já está sendo descrito no ManyToMany do Exam
 
   def __str__(self):
@@ -30,7 +31,7 @@ class Exam(models.Model):
   name = models.CharField(max_length=30)
   file = models.FileField()
   courses = models.ManyToManyField(Course)
-  video = models.OneToOneField('Video', on_delete=models.CASCADE, blank=True)
+  video = models.OneToOneField('Video', on_delete=models.CASCADE, blank=True, null=True)
 
 
 class Topic(models.Model):
@@ -55,6 +56,12 @@ class List(models.Model):
 
 class Question(models.Model):
   task = models.TextField()
-  options = models.TextField() # @ separa as respostas para exibir. Usar o split do python
-  answer = models.CharField(max_length=50)
   list = models.ManyToManyField('List')
+
+class Option(models.Model):
+  question = models.ManyToManyField(Question)
+  text = models.TextField()
+
+class Answer(models.Model):
+  question = models.ForeignKey(Question, on_delete = models.CASCADE) # Depois
+  text = models.TextField()
