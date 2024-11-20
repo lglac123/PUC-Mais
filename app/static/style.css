@@ -201,6 +201,12 @@ h1 {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  background-color: gray;
+}
+
+.listas{
+  display: flex;
+  flex-direction: column;
 }
 
 .disciplina{

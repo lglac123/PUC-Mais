@@ -12,6 +12,9 @@ def disciplinas(request):
     'courses': courses,
   })
 
+def aulas_listas_basic(request):
+
+  return render(request,'aulas_listas_basic.html',)
 
 def Disciplina(request, course_name):
   course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
