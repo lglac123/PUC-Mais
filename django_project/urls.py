@@ -16,6 +16,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("provas/", views.provas),
     path("aulas/", views.aulas),
+    path('perfil/', views.Perfil),
     path('disciplinas/',views.disciplinas),
     path("disciplinas/<str:course_name>",views.Disciplina),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

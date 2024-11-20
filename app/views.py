@@ -30,9 +30,13 @@ def provas(request):
   return render(request, "provas_antigas.html")
 
 
+def Perfil(request):
+  return render(request, 'Perfil.html')
+
 @login_required
 def aulas(request):
   return render(request, "aulas.html")
+
 
 
 def createUser(request):
