@@ -12,6 +12,8 @@ def disciplinas(request):
     'courses': courses,
   })
 
+def aulas_listas_basic(request):
+  return render(request, "aulas_listas_basic.html")
 
 def Disciplina(request, course_name):
   course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
@@ -21,14 +23,7 @@ def Disciplina(request, course_name):
     'topic': topic,
     'course': course,
   })
-def Disciplina(request, course_name):
-  course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
-  topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
 
-  return render(request,'Disciplina.html', {
-    'topic': topic,
-    'course': course,
-  })
 
 def home(request):
   return render(request, 'home.html')
