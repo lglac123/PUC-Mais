@@ -37,6 +37,9 @@ def provas(request):
 def aulas(request):
   return render(request, "aulas.html")
 
+@login_required
+def perfil(request):
+  return render(request,'perfil.html')
 
 def createUser(request):
   if request.method == "POST":  

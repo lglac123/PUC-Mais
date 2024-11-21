@@ -16,6 +16,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("provas/", views.provas),
     path("aulas/", views.aulas),
+    path('perfil/',views.perfil),
     path('disciplinas/',views.disciplinas),
     path("disciplinas/<str:course_name>",views.Disciplina),
     path("aulas&listasBasic/",views.aulas_listas_basic),
