@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .models import Course, Topic
+from .models import Course, Topic, Exam, Question, Option, Answer, UserCourse, Video, List
 
 
 def disciplinas(request):
