@@ -201,7 +201,8 @@ h1 {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background-color: gray;
+  background-color: lightgrey;
+  color:lightgrey
 }
 
 .listas{
