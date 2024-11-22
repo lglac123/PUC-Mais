@@ -40,6 +40,7 @@ def home(request):
 
 @login_required
 def provas(request, course_name):
+  # Ajuda o Jean
   course = Course.objects.filter(name=course_name).all()
   provas = Exam.objects.filter(courses__in=course)
   return render(request, 'provas_antigas.html', {
