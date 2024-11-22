@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .models import Course, Topic
+from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
 
 
 def disciplinas(request):
@@ -12,22 +12,24 @@ def disciplinas(request):
     'courses': courses,
   })
 
+
 def Disciplina(request, course_name):
   course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
-  print(course)
   topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
-  print(topic)
 
   return render(request,'Disciplina.html', {
     'topics': topic,
     'course': course[0],
   })
 
+
 def aulas_listas_basic(request):
   return render(request, "aulas_listas_basic.html")
 
+
 def home(request):
   return render(request, 'home.html')
+
 
 @login_required
 def provas(request):
@@ -38,9 +40,11 @@ def provas(request):
 def aulas(request):
   return render(request, "aulas.html")
 
+
 @login_required
 def perfil(request):
   return render(request,'perfil.html')
+
 
 def createUser(request):
   if request.method == "POST":  
@@ -74,13 +78,3 @@ def loginUser(request):
 def logoutUser(request):
   logout(request)
   return redirect("home")
-
-
-
-
-
-
-
-
-
-
