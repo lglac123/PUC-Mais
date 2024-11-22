@@ -13,11 +13,12 @@
 
     <div class="container-grid">
         {% for course in courses %}
-            <div class="card">
-                <img src="{{ course.image }}" alt="Imagem da disciplina {{ course.name }}">
+            <div class="card vertical-align"style="margin-top:50px;margin-bottom:50px">
+                <div><p>{{course.name}}</p></div>
                 <div class="central">
-                    <a class="button1" href="{{ course.name }}">{{ course.name }}</a>
+                    <a class="button1 central" style="margin-bottom:10px;height: 65px;"href="{{ course.name }}">{{ course.name }}</a>
                 </div>
+                <div><h4>DIFICULDADE: {{course.dificulty}}</h4></div>
             </div>
         {% endfor %}
     </div>

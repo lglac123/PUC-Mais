@@ -19,7 +19,7 @@ urlpatterns = [
     path('perfil/',views.perfil),
     path('disciplinas/',views.disciplinas),
     path("disciplinas/<str:course_name>",views.Disciplina),
-    path("aulas&listasBasic/",views.aulas_listas_basic),
+    path("disciplinas/<str:course_name>/aulas&listas",views.aulas_listas_basic),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
