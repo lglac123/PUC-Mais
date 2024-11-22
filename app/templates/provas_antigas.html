@@ -10,20 +10,21 @@
 
 {% block main %}
 
-<div class="central" style="font-size: 30px; font-weight: bold; padding-top: 30px">
-  Provas Anteriores
-</div>
-<div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">
-  Matéria
+<div class="central" style="font-size: 30px; font-weight: bold; padding-top: 30px">Provas Anteriores</div>
+<div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">Matéria</div>
+
+<div style="display: flex; justify-content: center; flex-wrap: wrap; margin: auto; gap: 20px">
+
+{% for prova in provas %}
+  <div style="display: flex; align-items: center; flex-direction: column">
+  <p style="font-size: 20px; margin-bottom:10px">{{ prova.year }}.{{ prova.semester }}</p> 
+  <div class="sectionrectangle vertical-align">
+    <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="200" height="200" 
+    src="https://www.youtube.com/embed/neNw5m9eUjA" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
+    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <span style="margin: 0px">{{ prova.name }}</span>
+  </div></div>
+{% endfor %}
 </div>
 
-{% comment %} Fazer como um for para o banco de dados {% endcomment %}
-<div>
-<p>Período</p> 
-<div class="sectionrectangle vertical-align">
-  <iframe style="border: 10px solid black; border-radius: 5px" width="200" height="150" 
-  src="https://www.youtube.com/embed/neNw5m9eUjA" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
-  autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-</div>
 {% endblock %}
