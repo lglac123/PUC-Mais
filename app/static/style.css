@@ -73,12 +73,18 @@ h1 {
 }
 
 .sectionrectangle {
-  height: 250px; width: 250px;
+  height: 400px; width: 300px;
   display:flex;
   background-color: lightgray;
   border-radius: 20px;
-  margin: 120px 50px;
-}
+  }
+
+  .vertical-align {
+    display: flex; 
+    align-items: center; 
+    flex-direction: column; 
+    justify-content: center"
+  }
 
 .loginbutton {
   background-color: gray;

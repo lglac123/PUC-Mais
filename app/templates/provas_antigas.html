@@ -6,35 +6,24 @@
   Provas Antigas
 {% endblock %}
 
+{% comment %} Fazer com que seja a página de uma prova antiga específica {% endcomment %}
+
 {% block main %}
-  <h1>Provas Anteriores</h1>
 
-  <img class="central" style="width: 500px;padding: none" src="{% static 'LogoNome.png' %}">
+<div class="central" style="font-size: 30px; font-weight: bold; padding-top: 30px">
+  Provas Anteriores
+</div>
+<div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">
+  Matéria
+</div>
 
-  <div class="p1">
-    <p>Bem-vindo ao MVP da PUC+, uma plataforma de estudos de alunos da PUC-Rio, para alunos da PUC-Rio</p>
-    <p>Ainda em fase de teste, esta plataforma é direcionada a alunos do CBCTC</p>
-  </div>
-
-  <div class="classborder">
-    <ol>
-      {% for tmovie in top_movie %}
-        <li class="title">
-          Top Filmes {{tmovie.nome}} &nbsp; <a class="button1" href="/top_movie/update/{{ tmovie.id }}">Atualizar</a> 
-          &nbsp; <a class="button2" href="top_movie/delete/{{ tmovie.id }}">Remover</a>
-          {% for movie in tmovie.movie_set.all %}
-          <ul class="subtitle">
-            {{tmovie.icone}} &nbsp; 
-            <a style="text-decoration: none; color: white" href="{{movie.link}}" target="_blank">{{movie.nome}}</a> 
-            &emsp; - &emsp; Nota: &nbsp;{{movie.nota}}
-          </ul>
-          {% endfor %}
-        </li>
-      {% endfor %}
-      <br>
-        <a class="button3" href='/top_movie/new' style="text-decoration: none; color: black; margin-left: 70px">Adicionar Pessoa</a>
-        &emsp;
-        <a class="button3" href='/movie/new' style="text-decoration: none; color: black; ">Adicionar Filme</a>
-    </ol>
-  </div>
+{% comment %} Fazer como um for para o banco de dados {% endcomment %}
+<div>
+<p>Período</p> 
+<div class="sectionrectangle vertical-align">
+  <iframe style="border: 10px solid black; border-radius: 5px" width="200" height="150" 
+  src="https://www.youtube.com/embed/neNw5m9eUjA" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
+  autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+</div>
 {% endblock %}
