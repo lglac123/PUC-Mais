@@ -33,7 +33,10 @@ def home(request):
 
 @login_required
 def provas(request):
-  return render(request, "provas_antigas.html")
+  provas = Exam.objects.all()
+  return render(request, 'provas_antigas.html', {
+    'provas': provas,
+  })
 
 
 @login_required
