@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
 
-
+# Recuperar o banco de dados
 def disciplinas(request):
   courses = Course.objects.all()
   return render(request, 'disciplinas.html', {
