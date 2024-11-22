@@ -68,7 +68,7 @@ def createUser(request):
     return redirect("home")
   
   return render(request, "register.html", context = {"action": "Adicionar"})
-
+#
 
 def loginUser(request):
   if request.method == "POST":  
