@@ -56,13 +56,13 @@ class Video(models.Model):
 
 class List(models.Model):
   name = models.CharField(max_length=50)
-  topic = models.ForeignKey(Topic, on_delete=models.CASCADE) # Queria [0..1] na List
   # A relação com questão já está descrito no ManyToMany em Question
 
 
 class Question(models.Model):
   task = models.TextField()
   list = models.ManyToManyField('List')
+  topic = models.ForeignKey(Topic, on_delete = models.CASCADE, blank = True, null = True)
 
 class Option(models.Model):
   question = models.ManyToManyField(Question)

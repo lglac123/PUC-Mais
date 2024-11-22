@@ -14,7 +14,7 @@ class VideoAdmin(admin.ModelAdmin):
   list_display = ["name", "link", "description", "topic"]
 
 class ListAdmin(admin.ModelAdmin):
-  list_display = ["name", "topic"]
+  list_display = ["name"]
 
 class QuestionAdmin(admin.ModelAdmin):
   list_display = ["task"]
