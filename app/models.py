@@ -7,6 +7,8 @@ class Discipline(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length = 100)
   image = models.FileField(blank=True, null=True)
+  def __str__(self):
+    return f"{self.name}"
 
 class Course(models.Model):
   name = models.CharField(max_length=40)
@@ -38,11 +40,16 @@ class Exam(models.Model):
   file = models.FileField()
   courses = models.ManyToManyField(Course)
   video = models.OneToOneField('Video', on_delete=models.CASCADE, blank=True, null=True)
+  def __str__(self):
+    return f"{self.name}"
 
 
 class Topic(models.Model):
   name = models.CharField(max_length=50)
   course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+  def __str__(self):
+        return self.name  # Retorna o nome do tópico
   # list = models.ForeignKey('List', on_delete=models.CASCADE, blank=True) # Não sei se precisa disso de fato. Seria para garantir que um tópico só tem 1 lista no máximo
 
 
@@ -51,11 +58,15 @@ class Video(models.Model):
   link = models.URLField()
   description = models.TextField(blank=True)
   topic = models.ForeignKey(Topic, on_delete=models.CASCADE, blank=True)
+  def __str__(self):
+    return f"{self.name}"
   # A relação do vídeo com a prova já está descrito no OneToOne no Exam
 
 
 class List(models.Model):
   name = models.CharField(max_length=50)
+  def __str__(self):
+    return f"{self.name}"
   # A relação com questão já está descrito no ManyToMany em Question
 
 

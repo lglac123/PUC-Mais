@@ -14,12 +14,12 @@ urlpatterns = [
     path("users/logout/", views.logoutUser, name = "logout"),
     path("", views.home, name = "home"),
     path("admin/", admin.site.urls),
-    path("provas/", views.provas),
     path("aulas/", views.aulas),
     path('perfil/',views.perfil),
     path('disciplinas/',views.disciplinas),
     path("disciplinas/<str:course_name>",views.Disciplina),
     path("disciplinas/<str:course_name>/aulas&listas/",views.aulas_listas_basic),
+    path("disciplinas/<str:course_name>/provas/", views.provas)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

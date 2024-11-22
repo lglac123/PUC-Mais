@@ -26,7 +26,7 @@ def Disciplina(request, course_name):
 def aulas_listas_basic(request, course_name):
   course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
   topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
-  videos=Video.objects.filter().all()
+  videos=Video.objects.filter(topic__in=topic)
   return render(request, "aulas_listas_basic.html",{
     'topics': topic,
     'course': course[0],
@@ -39,8 +39,9 @@ def home(request):
 
 
 @login_required
-def provas(request):
-  provas = Exam.objects.all()
+def provas(request, course_name):
+  course = Course.objects.filter(name=course_name).all()
+  provas = Exam.objects.filter(courses__in=course)
   return render(request, 'provas_antigas.html', {
     'provas': provas,
   })
