@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Disciplina
+{% endblock %}
+
+{% block main %}
+
+<style>
+
+  .section {
+      padding: 15px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f5f5f5;
+  }
+
+  .section#nome {
+      height: 60px;
+  }
+
+  .section#descricao {
+      height: 100px;
+  }
+
+  .section#disciplinas {
+      height: 150px;
+      position: relative;
+  }
+
+</style>
+</head>
+<body>
+<main>
+  <div class="section" id="nome">Nome</div>
+  <div class="section" id="descricao">Descrição (email, informações da conta, etc)</div>
+  <div class="section" id="disciplinas">
+      Minhas Disciplinas (Progresso)
+  </div>
+  <div>
+<img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+</div>
+</main>
+</body>
+</html>
+{% endblock %}
