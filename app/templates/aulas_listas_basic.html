@@ -16,11 +16,13 @@
 
   <div class="container" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     <br>
-    <h4 class="card"style="border: gray">Integração por partes</h4>
+    {% for video in videos %}
+    <h4 class="card"style="border: gray">{{video.name}}</h4>
     <br>
     <div class="linhaDisciplinas"style=  "background-color: lightgrey;">
+      
       <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
-    src="https://www.youtube.com/embed/UiICgjPmb9c?si=DUUgY3RRRdc6EPZJ" title="Integração por partes PUC+" frameborder="0" allow="accelerometer; 
+    src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
     autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <div class="listas">
         <a href="/listas/">Lista 01</a>
@@ -29,6 +31,7 @@
       </div>
     </div>
     <br>
+    {%endfor%}
     
   </div>
   <br>
