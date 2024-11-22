@@ -6,13 +6,13 @@ from django.db.models.deletion import CASCADE
 class Discipline(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length = 100)
-  image = models.FileField()
+  image = models.FileField(blank=True, null=True)
 
 class Course(models.Model):
   name = models.CharField(max_length=40)
   dificulty = models.IntegerField(default=0)
   # A relação com a prova já está sendo descrito no ManyToMany do Exam
-  discipline = models.ForeignKey(Discipline, on_delete = models.CASCADE)
+  discipline = models.ForeignKey(Discipline, blank=True, null=True, on_delete = models.CASCADE)
   def __str__(self):
     return f"{self.name}"
   

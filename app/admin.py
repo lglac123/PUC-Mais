@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Exam, Course, Topic, Video, List, Question, Option, Answer
+from .models import Exam, Course, Topic, Video, List, Question, Option, Answer, Discipline
 
 class CourseAdmin(admin.ModelAdmin):
   list_display = ["name", "dificulty"]
@@ -25,6 +25,9 @@ class OptionAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
   list_display = ["text"]
 
+class DisciplineAdmin(admin.ModelAdmin):
+  list_display = ["code", "name"]
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Exam, ExamAdmin)
 admin.site.register(Topic, TopicAdmin)
@@ -33,3 +36,4 @@ admin.site.register(List,ListAdmin)
 admin.site.register(Question,QuestionAdmin)
 admin.site.register(Option, OptionAdmin)
 admin.site.register(Answer, AnswerAdmin)
+admin.site.register(Discipline, DisciplineAdmin)
