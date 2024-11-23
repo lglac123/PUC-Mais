@@ -42,7 +42,7 @@ def home(request):
 def provas(request, course_name):
   course = Course.objects.filter(name=course_name).all()
   provas = Exam.objects.filter(courses__in=course)
-  print(provas)
+  print(provas, len(provas))
   return render(request, 'provas_antigas.html', {
     'provas': provas,
   })
