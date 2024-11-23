@@ -238,14 +238,16 @@ h1 {
   display: grid;
   grid-template-columns: 200px 200px;
   grid-auto-rows: minmax(200px, auto);
+  row-gap: 50px;
   border-radius: 15px;
   width: 800px;
   background-color: lightgray;
   border: 3px ;
   justify-content: space-around;
-  margin: 5px auto;
+  margin: 10px auto;
   justify-items: center;
-  
+  align-items: center;
+  padding: 30px 0;
 }
 
 .container {
@@ -271,6 +273,8 @@ h1 {
   place-items: center;
   align-items: center;
   margin: 5px auto;
+  text-align: center;
+  box-shadow: 0px 2px 4px darkgray;
   & img {
     height: 100px;
     max-width: 300px;
@@ -280,6 +284,13 @@ h1 {
     text-decoration: none;
     color: black;
     margin: 5px 0;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 10px;
+    &:hover {
+      background-color: darkslategray; 
+      color: white; 
+      transition-duration: 0.3s;
+    }
   }
-  box-shadow: 0px 2px 4px darkgray;
 }

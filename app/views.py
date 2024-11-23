@@ -40,17 +40,17 @@ def home(request):
 
 @login_required
 def provas(request, course_name):
-  # Ajuda o Jean
   course = Course.objects.filter(name=course_name).all()
   provas = Exam.objects.filter(courses__in=course)
+  print(provas)
   return render(request, 'provas_antigas.html', {
     'provas': provas,
   })
 
 
-@login_required
-def aulas(request):
-  return render(request, "aulas.html")
+# @login_required
+# def aulas(request):
+#   return render(request, "aulas.html")
 
 
 @login_required
@@ -69,7 +69,7 @@ def createUser(request):
     return redirect("home")
   
   return render(request, "register.html", context = {"action": "Adicionar"})
-#
+
 
 def loginUser(request):
   if request.method == "POST":  

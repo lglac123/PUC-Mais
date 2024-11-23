@@ -11,18 +11,38 @@
 
     <img class="central" style="width: 300px; padding: 20px 0px 40px 0px" src="{% static 'LogoPUCMais.png' %}">
 
-    <div class="container-grid">
+    <!-- <div class="container-grid">
         {% for course in courses %}
             <div class="card vertical-align"style="margin-top:50px;margin-bottom:50px">
-                <div><p>{{course.name}}</p></div>
+                <div>
+                    <p>{{ course.name }}</p>
+                </div>
                 <div class="central">
-                    <a class="button1 central" style="margin-bottom:10px;height: 65px;"href="{{ course.name }}">{{ course.name }}</a>
+                    <a class="button1 central" style="margin-bottom:10px;height: 65px;" href="{{ course.name }}">
+                        {{ course.name }}
+                    </a>
                 </div>
                 <div><h4>DIFICULDADE: {{course.dificulty}}</h4></div>
             </div>
         {% endfor %}
+    </div> -->
+    
+    <div class="container-grid">
+        {% for course in courses %}
+            <div class="card">
+                <div>
+                    <p>{{ course.name }}</p>
+                </div>
+                <div class="central">
+                    <a href="{{ course.name }}">{{ course.name }}</a>
+                </div>
+                <div>
+                    <h4>DIFICULDADE: {{course.dificulty}}</h4>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    `
+
     <!-- <div class="divretangulo">
         <div class="retanguloGrande">
             <div class="linhaDisciplinas">

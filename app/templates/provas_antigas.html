@@ -19,6 +19,7 @@
   <div style="display: flex; align-items: center; flex-direction: column">
   <p style="font-size: 20px; margin-bottom:10px">{{ prova.year }}.{{ prova.semester }}</p> 
   <div class="sectionrectangle vertical-align">
+    <embed src="/media/{{ prova.file }}" width="800px" height="2000px" type="application/pdf">
     <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="200" height="200" 
     src="{{ prova.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
     autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

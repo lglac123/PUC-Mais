@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 
+
+# Disciplina é Calc 1, Fis 1, ModProg, ...
 class Discipline(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length = 100)
@@ -10,6 +12,8 @@ class Discipline(models.Model):
   def __str__(self):
     return f"{self.name}"
 
+
+# Curso seria Calc 1 básico, Fis 1 avançado, ...
 class Course(models.Model):
   name = models.CharField(max_length=40)
   dificulty = models.IntegerField(default=0)
@@ -18,8 +22,6 @@ class Course(models.Model):
   def __str__(self):
     return f"{self.name}"
   
-
-
 
 class UserCourse(models.Model):
   course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -41,7 +43,7 @@ class Exam(models.Model):
   courses = models.ManyToManyField(Course)
   video = models.OneToOneField('Video', on_delete=models.CASCADE, blank=True, null=True)
   def __str__(self):
-    return f"{self.name}"
+    return f"{self.name} - {self.file}"
 
 
 class Topic(models.Model):
