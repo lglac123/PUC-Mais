@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
 
-# Recuperar o banco de dados
+
 def disciplinas(request):
   courses = Course.objects.all()
   return render(request, 'disciplinas.html', {
@@ -14,12 +14,10 @@ def disciplinas(request):
 
 
 def Disciplina(request, course_name):
-  course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
-  topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
-
+  course = Course.objects.get(name=course_name) # Pegar o curso a partir do nome no URL
+  print(course)
   return render(request,'Disciplina.html', {
-    'topics': topic,
-    'course': course[0],
+    'course': course,
   })
 
 
@@ -48,15 +46,24 @@ def provas(request, course_name):
   })
 
 
-# @login_required
-# def aulas(request):
-#   return render(request, "aulas.html")
-
-
 @login_required
 def perfil(request):
   return render(request,'perfil.html')
 
+
+def userCourse(request):
+  if not request.user.is_authenticated:
+    return redirect("home")
+  elif request.method == "POST":
+    userCourse_new = UserCourse()
+    userCourse_new.course = Course.objects.get(name = request.POST["course"])
+    userCourse_new.user = request.user
+    userCourse_new.status = 0
+
+    userCourse_new.save()
+    print(userCourse_new)
+    return redirect("Disciplina", request.POST["course"])
+  return redirect("disciplinas")
 
 def createUser(request):
   if request.method == "POST":  

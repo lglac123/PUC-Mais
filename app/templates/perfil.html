@@ -25,9 +25,30 @@
     <div class="userbar">
         Bem vindo, {{ request.user.username }}!
     </div>
-    <div class="section"> <!-- É necessário essa seção? -->
-        Descrição (email, informações da conta, etc)
+    <div class="container-exam" style="justify-content: space-around; text-align: center">
+        <span style="width: 100%; font-size: 20px; margin-bottom: 30px;"><u>Detalhes da conta</u></span>
+        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px;">
+            <h2>Email:</h2>
+            <p style="font-size: 1.3rem;">{{ request.user.email }}</p>
+        </div>
+        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px;">
+            <h2>First name:</h2>
+            <p style="font-size: 1.3rem;">
+                {% if request.user.first_name %}
+                    {{ request.user.first_name }}
+                {% else %}
+                    Not defined
+                {% endif %}
+            </p>
+        </div>
+        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px;">
+            <h2>Username:</h2>
+            <p style="font-size: 1.3rem;">{{ request.user.username }}</p>
+        </div>
     </div>
+    <!-- <div class="section">
+        Descrição (email, informações da conta, etc)
+    </div> -->
     <div class="section">
         Minhas Disciplinas (Progresso)
     </div>
