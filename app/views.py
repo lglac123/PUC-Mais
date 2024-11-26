@@ -81,6 +81,20 @@ def removeUserCourse(request):
     'userCourse': usercourse,
   })
 
+def favoriteUserCourseChange(request):
+
+  usercourse = UserCourse.objects.get(id = request.POST["courseId"])
+
+
+  if usercourse.favorite == 0:
+    usercourse.favorite = 1
+  else:
+    usercourse.favorite = 0
+  usercourse.save()
+
+  return redirect("perfil")  
+
+
 def createUser(request):
   if request.method == "POST":  
     user = User.objects.create_user(
@@ -95,7 +109,9 @@ def createUser(request):
 
 
 def loginUser(request):
+  print("ver se esta chamando a view")  
   if request.method == "POST":  
+    print("ver se esta pegando o metodo")
     user = authenticate(
       username = request.POST["username"], 
       password = request.POST["password"]

@@ -46,6 +46,26 @@
             <p style="font-size: 1.3rem;">{{ request.user.username }}</p>
         </div>
     </div>
+    
+    <div class="container-exam" style="justify-content: space-around; text-align: center">
+        <span style="font-size: 20px; margin-bottom: 10px; width: 100%;">Disciplinas Favoritas</span>
+        {% for course in userCourse %}
+            {%if course.favorite == 1 %}
+                <div style="border: 3px solid black; border-radius: 15px; padding:10px">
+                    <p>{{ course.course.name }}</p>
+                    <p>Dificuldade: {{ course.course.dificulty }}</p>
+                    <p class="central">Status: {{ course.status }}</p>
+                    <input hidden value="{{ course.id }}" required name="courseId">
+                    <form action="/userCourse/favorite/" method="post">
+                        {% csrf_token %}
+                        <input hidden value="{{ course.id }}" required name="courseId">
+                        <button type="submit">Remover favorito</button>
+                    </form>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
     <div class="container-exam" style="justify-content: space-around; text-align: center">
         <span style="font-size: 20px; margin-bottom: 10px; width: 100%;">Minhas Disciplinas</span>
         {% for course in userCourse %}
@@ -57,6 +77,16 @@
                     <input hidden value="{{ course.id }}" required name="courseId">
                     <button type="submit">Remover curso</button>
                 </form>
+                <form action="/userCourse/favorite/" method="post">
+                    {% csrf_token %}
+                    <input hidden value="{{ course.id }}" name="courseId" required>
+                    <button type="submit">Adicionar Favorito</button>
+                </form>
+                <!-- <form action="/userCourse/favorite/" method="post" >
+                    {% csrf_token %}
+                    <input hidden value="{{ course.id }}" required name="courseId">
+                    <button type="submit">Adicionar favorito</button>
+                </form> -->
             </div>
         {% endfor %}
     </div>
