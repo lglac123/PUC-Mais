@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
 
 
+def home(request):
+  return render(request, 'home.html')
+
+
 def disciplinas(request):
   courses = Course.objects.all()
   return render(request, 'disciplinas.html', {
@@ -32,10 +36,6 @@ def aulas_listas_basic(request, course_name):
   })
 
 
-def home(request):
-  return render(request, 'home.html')
-
-
 @login_required
 def provas(request, course_name):
   course = Course.objects.get(name=course_name)
@@ -48,13 +48,16 @@ def provas(request, course_name):
 
 @login_required
 def perfil(request):
-  return render(request,'perfil.html')
+  courses = UserCourse.objects.filter(user=request.user)
+  print(courses)
+  return render(request,'perfil.html', {
+    'userCourse': courses,
+  })
 
 
-def userCourse(request):
-  if not request.user.is_authenticated:
-    return redirect("login")
-  elif request.method == "POST":
+@login_required
+def createUserCourse(request):
+  if request.method == "POST":
     userCourse_new = UserCourse()
     userCourse_new.course = Course.objects.get(name = request.POST["course"])
     userCourse_new.user = request.user
@@ -64,6 +67,18 @@ def userCourse(request):
     print(userCourse_new)
     return redirect("Disciplina", request.POST["course"])
   return redirect("disciplinas")
+
+
+def removeUserCourse(request):
+  if request.method == "POST":
+    usercourse = UserCourse.objects.get(id = request.POST["userCourseId"])
+    usercourse.delete()
+    return redirect("home")
+  
+  usercourse = UserCourse.objects.get(id = request.GET.get("courseId"))
+  return render(request, "deleteUserCourse.html", {
+    'userCourse': usercourse,
+  })
 
 def createUser(request):
   if request.method == "POST":  

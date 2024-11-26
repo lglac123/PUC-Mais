@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Remvoer curso
+{% endblock %}
+
+{% block main %}
+    <h1>Você tem certeza que quer remover esse curso do seu perfil?</h1>
+    <h3>{{ userCourse.course.name }}</h3>
+    <form action="/userCourse/delete/" method="post">
+        {% csrf_token %}
+        <input hidden value="{{ userCourse.id }}" name="userCourseId" required>
+        <button type="submit">Deletar</button>
+    </form>
+{% endblock %}

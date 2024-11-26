@@ -46,11 +46,25 @@
             <p style="font-size: 1.3rem;">{{ request.user.username }}</p>
         </div>
     </div>
+    <div class="container-exam" style="justify-content: space-around; text-align: center">
+        <span style="font-size: 20px; margin-bottom: 10px; width: 100%;">Minhas Disciplinas</span>
+        {% for course in userCourse %}
+            <div style="border: 3px solid black; border-radius: 15px; padding:10px">
+                <p>{{ course.course.name }}</p>
+                <p>Dificuldade: {{ course.course.dificulty }}</p>
+                <p class="central">Status: {{ course.status }}</p>
+                <form action="/userCourse/delete/">
+                    <input hidden value="{{ course.course.id }}" required name="courseId">
+                    <button type="submit">Remover curso</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
     <!-- <div class="section">
         Descrição (email, informações da conta, etc)
     </div> -->
-    <div class="section">
+    <!-- <div class="section">
         Minhas Disciplinas (Progresso)
-    </div>
+    </div> -->
     <img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
 {% endblock %}
