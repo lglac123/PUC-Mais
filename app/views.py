@@ -69,6 +69,7 @@ def createUserCourse(request):
   return redirect("disciplinas")
 
 
+@login_required
 def removeUserCourse(request):
   if request.method == "POST":
     usercourse = UserCourse.objects.get(id = request.POST["userCourseId"])
@@ -76,9 +77,11 @@ def removeUserCourse(request):
     return redirect("home")
   
   usercourse = UserCourse.objects.get(id = request.GET.get("courseId"))
+  print(usercourse)
   return render(request, "deleteUserCourse.html", {
     'userCourse': usercourse,
   })
+
 
 def createUser(request):
   if request.method == "POST":  
@@ -111,4 +114,8 @@ def loginUser(request):
   
 def logoutUser(request):
   logout(request)
+  return redirect("home")
+
+
+def editUser(request):
   return redirect("home")

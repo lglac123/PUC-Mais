@@ -16,7 +16,7 @@
         <div class="section wide-section">
             {% if request.user.is_authenticated %}
                 {% if not course.usercourse_set.all %}
-                    <form action="/userCourse/create" method="post">
+                    <form action="/userCourse/create/" method="post">
                         {% csrf_token %}
                         <input name="course" value="{{ course }}" hidden>
                         <button type="submit">Matricular-se no curso</button>
