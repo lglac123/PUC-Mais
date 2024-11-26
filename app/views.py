@@ -76,6 +76,7 @@ def removeUserCourse(request):
     return redirect("home")
   
   usercourse = UserCourse.objects.get(id = request.GET.get("courseId"))
+  print(usercourse)
   return render(request, "deleteUserCourse.html", {
     'userCourse': usercourse,
   })

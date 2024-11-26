@@ -54,7 +54,7 @@
                 <p>Dificuldade: {{ course.course.dificulty }}</p>
                 <p class="central">Status: {{ course.status }}</p>
                 <form action="/userCourse/delete/">
-                    <input hidden value="{{ course.course.id }}" required name="courseId">
+                    <input hidden value="{{ course.id }}" required name="courseId">
                     <button type="submit">Remover curso</button>
                 </form>
             </div>
