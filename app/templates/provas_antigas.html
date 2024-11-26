@@ -28,21 +28,23 @@
   </div> -->
 
   <div class="central" style="font-size: 30px; font-weight: bold; padding-top: 30px">Provas Anteriores</div>
-  <div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">Matéria</div>
-  <div class="container-exam">
-    {% for prova in provas %}
-      <div class="exam">
-        <span style="font-size: 20px; margin-bottom:40px; text-align: center; width: 100%;">{{ prova.name }} - {{ prova.year }}.{{ prova.semester }}</span>
-        <div style="flex-basis: 800px;">
-          <embed src="/media/{{ prova.file }}" width="100%" height="500px" type="application/pdf">
-          <p><a href="/media/{{ prova.file }}" target="_blank" rel="noopener noreferrer">Link da prova</a></p>
+  <div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">{{ course_name }}</div>
+  {% if provas %}
+    <div class="container-exam">
+      {% for prova in provas %}
+        <div class="exam">
+          <span style="font-size: 20px; margin-bottom:40px; text-align: center; width: 100%;">{{ prova.name }} - {{ prova.year }}.{{ prova.semester }}</span>
+          <div style="flex-basis: 800px;">
+            <embed src="/media/{{ prova.file }}" width="100%" height="500px" type="application/pdf">
+            <p><a href="/media/{{ prova.file }}" target="_blank" rel="noopener noreferrer">Link da prova</a></p>
+          </div>
+          <div class="central">
+            <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="400" height="400" 
+            src="{{ prova.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
+            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
         </div>
-        <div class="central">
-          <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="200" height="200" 
-          src="{{ prova.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
-          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endblock %}
