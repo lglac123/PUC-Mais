@@ -303,10 +303,10 @@ h1 {
   width: 1000px;
   border-radius: 10px;
   padding: 20px;
-  background-color: gray;
+  /* background-color: rgb(165, 165, 165); */
   place-items: center;
   align-items: center;
-  margin: 5px auto;
+  margin: 15px auto;
   text-align: center;
   box-shadow: 0px 2px 4px darkgray;
 }
