@@ -27,6 +27,7 @@ class UserCourse(models.Model):
   course = models.ForeignKey(Course, on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   status = models.IntegerField(default=0)
+  favorite = models.IntegerField(default = 0)
 
   class Meta:
     unique_together = ('user', 'course')
