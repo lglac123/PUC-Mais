@@ -23,6 +23,7 @@ urlpatterns = [
     path("userCourse/create/", views.createUserCourse),
     path("userCourse/delete/", views.removeUserCourse),
     path("userCourse/favorite/", views.favoriteUserCourseChange, name="perfil"),
+    path('filtroano/',views.BuscaAnoProva),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

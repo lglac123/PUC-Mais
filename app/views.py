@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
-
+from .forms import BuscaAno
 
 def home(request):
   return render(request, 'home.html')
@@ -44,6 +44,25 @@ def provas(request, course_name):
     'provas': provas,
     'course_name': course,
   })
+
+@login_required
+def BuscaAnoProva(request):
+    # Inicializa o formulário com os dados recebidos pelo GET
+    formulario = BuscaAno(request.GET or None)
+    resultado = None  # Inicializa o resultado como vazio
+
+    if formulario.is_valid():
+        # Obtém o dado do campo 'ano' do formulário
+        ano = formulario.cleaned_data['ano']  # Aqui usamos 'ano', que está no formulário
+        # Filtra os exames pelo ano
+        resultado = Exam.objects.filter(year__icontains=ano)
+
+    # Renderiza a página com o formulário e os resultados
+    return render(
+        request,
+        'BuscaAno.html',
+        {'formulario': formulario, 'resultado': resultado}
+    )
 
 
 @login_required
