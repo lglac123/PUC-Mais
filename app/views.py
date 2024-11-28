@@ -18,8 +18,13 @@ def disciplinas(request):
 
 
 def Disciplina(request, discipline_name):
-  course = Course.objects.get(discipline__name=discipline_name) # Pegar o curso a partir do nome no URL
+  course = Course.objects.filter(discipline__name=discipline_name).all() # Pegar o curso a partir do nome no URL
   print(course)
+  try:
+    course = course[0]
+  except:
+    course = []
+
   return render(request,'Disciplina.html', {
     'course': course,
   })
