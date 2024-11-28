@@ -52,10 +52,10 @@ def BuscaAnoProva(request):
     resultado = None  # Inicializa o resultado como vazio
 
     if formulario.is_valid():
-        # Obtém o dado do campo 'ano' do formulário
-        ano = formulario.cleaned_data['ano']  # Aqui usamos 'ano', que está no formulário
-        # Filtra os exames pelo ano
-        resultado = Exam.objects.filter(year__icontains=ano)
+        # Obtém o dado do campo 'nome' do formulário
+        nome = formulario.cleaned_data.get('nome')  # Usa .get() para evitar KeyError
+        if nome:  # Apenas filtre se um nome válido foi fornecido
+            resultado = Exam.objects.filter(name__icontains=nome)
 
     # Renderiza a página com o formulário e os resultados
     return render(
@@ -63,8 +63,6 @@ def BuscaAnoProva(request):
         'BuscaAno.html',
         {'formulario': formulario, 'resultado': resultado}
     )
-
-
 @login_required
 def perfil(request):
   courses = UserCourse.objects.filter(user=request.user)

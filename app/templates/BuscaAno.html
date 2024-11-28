@@ -1,4 +1,8 @@
-{% load static %} 
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block main %}
 <link href="{% static 'styles.css'%}" rel="stylesheet" type="text/css" />
 <div class='formulario'>
 <h1>Buscar Links</h1>
@@ -27,3 +31,4 @@
 <p> Nenhum resultado encontrado </p>
 {% endif %}
 </div>
+{% endblock %}
