@@ -40,6 +40,7 @@ def aulas_listas_basic(request, course_name):
 def provas(request, course_name):
   course = Course.objects.get(name=course_name)
   provas = Exam.objects.filter(courses=course)
+  print(provas)
   return render(request, 'provas_antigas.html', {
     'provas': provas,
     'course_name': course,
