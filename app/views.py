@@ -49,7 +49,7 @@ def provas(request, course_name):
 @login_required
 def perfil(request):
   courses = UserCourse.objects.filter(user=request.user)
-  print(courses)
+  # print(courses)
   return render(request,'perfil.html', {
     'userCourse': courses,
   })
@@ -69,6 +69,7 @@ def createUserCourse(request):
   return redirect("disciplinas")
 
 
+@login_required
 def removeUserCourse(request):
   if request.method == "POST":
     usercourse = UserCourse.objects.get(id = request.POST["userCourseId"])
@@ -81,16 +82,17 @@ def removeUserCourse(request):
     'userCourse': usercourse,
   })
 
+
 def favoriteUserCourseChange(request):
+  if request.method == "POST":
+    print(request.POST["courseId"])
+    usercourse = UserCourse.objects.get(id = request.POST["courseId"])
 
-  usercourse = UserCourse.objects.get(id = request.POST["courseId"])
-
-
-  if usercourse.favorite == 0:
-    usercourse.favorite = 1
-  else:
-    usercourse.favorite = 0
-  usercourse.save()
+    if usercourse.favorite == 0:
+      usercourse.favorite = 1
+    else:
+      usercourse.favorite = 0
+    usercourse.save()
 
   return redirect("perfil")  
 
@@ -128,4 +130,8 @@ def loginUser(request):
   
 def logoutUser(request):
   logout(request)
+  return redirect("home")
+
+
+def editUser(request):
   return redirect("home")

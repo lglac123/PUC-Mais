@@ -17,20 +17,20 @@
   <div class="container" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     <br>
     {% for video in videos %}
-    <h4 class="card"style="border: gray">{{video.name}}</h4>
-    <br>
-    <div class="linhaDisciplinas"style=  "background-color: lightgrey;">
-      
-      <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
-    src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
-    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="listas">
-        <a href="/listas/">Lista 01</a>
-        <a href="/listas/">Lista 02</a>
-        <a href="/listas/">Lista 03</a>
+      <h4 class="card"style="border: gray">{{video.name}}</h4>
+      <br>
+      <div class="linhaDisciplinas"style=  "background-color: lightgrey;">
+        
+        <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
+      src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
+      autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="listas">
+          <a href="/listas/">Lista 01</a>
+          <a href="/listas/">Lista 02</a>
+          <a href="/listas/">Lista 03</a>
+        </div>
       </div>
-    </div>
-    <br>
+      <br>
     {%endfor%}
     
   </div>

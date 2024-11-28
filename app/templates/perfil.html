@@ -55,7 +55,6 @@
                     <p>{{ course.course.name }}</p>
                     <p>Dificuldade: {{ course.course.dificulty }}</p>
                     <p class="central">Status: {{ course.status }}</p>
-                    <input hidden value="{{ course.id }}" required name="courseId">
                     <form action="/userCourse/favorite/" method="post">
                         {% csrf_token %}
                         <input hidden value="{{ course.id }}" required name="courseId">
