@@ -7,31 +7,16 @@
 {% endblock %}
 
 {% block main %}
-    <!-- <style>
-        .section#nome {
-            height: 60px;
-        }
-
-        .section#descricao {
-            height: 100px;
-        }
-
-        .section#disciplinas {
-            height: 150px;
-            position: relative;
-        }
-    </style> -->
-
     <div class="userbar">
         Bem vindo, {{ request.user.username }}!
     </div>
     <div class="container-exam" style="justify-content: space-around; text-align: center">
         <span style="width: 100%; font-size: 20px; margin-bottom: 30px;"><u>Detalhes da conta</u></span>
-        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px;">
+        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px; background-color: rgb(236, 236, 236)">
             <h2>Email:</h2>
             <p style="font-size: 1.3rem;">{{ request.user.email }}</p>
         </div>
-        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px;">
+        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px; background-color: rgb(236, 236, 236)">
             <h2>First name:</h2>
             <p style="font-size: 1.3rem;">
                 {% if request.user.first_name %}
@@ -41,51 +26,50 @@
                 {% endif %}
             </p>
         </div>
-        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px;">
+        <div style="border: 3px solid black; border-radius: 10px; padding: 5px 10px; background-color: rgb(236, 236, 236)">
             <h2>Username:</h2>
             <p style="font-size: 1.3rem;">{{ request.user.username }}</p>
         </div>
     </div>
     
+    <hr class="divider">
+
     <div class="container-exam" style="justify-content: space-around; text-align: center">
-        <span style="font-size: 20px; margin-bottom: 10px; width: 100%;">Disciplinas Favoritas</span>
+        <span style="font-size: 20px; margin-bottom: 10px; width: 100%;"><u>Disciplinas Favoritas</u></span>
         {% for course in userCourse %}
             {%if course.favorite == 1 %}
-                <div style="border: 3px solid black; border-radius: 15px; padding:10px">
-                    <p>{{ course.course.name }}</p>
+                <div style="border: 3px solid black; border-radius: 15px; padding:10px; background-color: rgb(236, 236, 236);">
+                    <p><b><i>{{ course.course.name }}</i></b></p>
                     <p>Dificuldade: {{ course.course.dificulty }}</p>
                     <p class="central">Status: {{ course.status }}</p>
                     <form action="/userCourse/favorite/" method="post">
                         {% csrf_token %}
                         <input hidden value="{{ course.id }}" required name="courseId">
-                        <button type="submit">Remover favorito</button>
+                        <button class="removeCourse" type="submit">Remover favorito</button>
                     </form>
                 </div>
             {% endif %}
         {% endfor %}
     </div>
+
+    <hr class="divider">
     
     <div class="container-exam" style="justify-content: space-around; text-align: center">
-        <span style="font-size: 20px; margin-bottom: 10px; width: 100%;">Minhas Disciplinas</span>
+        <span style="font-size: 20px; margin-bottom: 10px; width: 100%;"><u>Minhas Disciplinas</u></span>
         {% for course in userCourse %}
-            <div style="border: 3px solid black; border-radius: 15px; padding:10px">
-                <p>{{ course.course.name }}</p>
+            <div style="border: 3px solid black; border-radius: 15px; padding:10px; background-color: rgb(236, 236, 236);">
+                <p><b><i>{{ course.course.name }}</i></b></p>
                 <p>Dificuldade: {{ course.course.dificulty }}</p>
                 <p class="central">Status: {{ course.status }}</p>
                 <form action="/userCourse/delete/">
                     <input hidden value="{{ course.id }}" required name="courseId">
-                    <button type="submit">Remover curso</button>
+                    <button class="removeCourse" type="submit">Remover curso</button>
                 </form>
                 <form action="/userCourse/favorite/" method="post">
                     {% csrf_token %}
                     <input hidden value="{{ course.id }}" name="courseId" required>
-                    <button type="submit">Adicionar Favorito</button>
+                    <button type="submit" class="addFavorite">Adicionar Favorito</button>
                 </form>
-                <!-- <form action="/userCourse/favorite/" method="post" >
-                    {% csrf_token %}
-                    <input hidden value="{{ course.id }}" required name="courseId">
-                    <button type="submit">Adicionar favorito</button>
-                </form> -->
             </div>
         {% endfor %}
     </div>
