@@ -35,6 +35,9 @@ def aulas_listas_basic(request, course_name):
     'videos':videos,
   })
 
+def FAQ(request):
+  return render(request,'FAQ.html')
+  
 
 @login_required
 def provas(request, course_name):
@@ -52,12 +55,9 @@ def BuscaAnoProva(request):
     resultado = None  # Inicializa o resultado como vazio
 
     if formulario.is_valid():
-        # Obtém o dado do campo 'nome' do formulário
-        nome = formulario.cleaned_data.get('nome')  # Usa .get() para evitar KeyError
-        if nome:  # Apenas filtre se um nome válido foi fornecido
+        nome = formulario.cleaned_data.get('nome')  
+        if nome:  
             resultado = Exam.objects.filter(name__icontains=nome)
-
-    # Renderiza a página com o formulário e os resultados
     return render(
         request,
         'BuscaAno.html',

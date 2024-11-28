@@ -24,6 +24,7 @@ urlpatterns = [
     path("userCourse/delete/", views.removeUserCourse),
     path("userCourse/favorite/", views.favoriteUserCourseChange, name="perfil"),
     path('filtroano/',views.BuscaAnoProva),
+    path('FAQ/',views.FAQ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
