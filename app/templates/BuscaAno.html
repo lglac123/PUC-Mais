@@ -6,9 +6,19 @@
 <link href="{% static 'styles.css'%}" rel="stylesheet" type="text/css" />
 <div class='formulario'>
 <h1>Buscar Links</h1>
+<img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+<div class="background">
+  <div class="p1">
+  <p style="justify-content: center">
+    Para Filtrar Links, Basta Escrever o código da disciplina, seguido pela prova que você deseja. Por exemplo, se você deseja acessar a P2 de ModProg, basta escrever CTC4002-P2. Em disciplinas
+    com provas Com Maple, como Cálculo, basta escrever, por exemplo, MAT4616-P1m ou MAT4616-P1, para acessar a prova sem maple.
+    (OBS: Ainda n mudei o nome no Banco de Dados ent n funciona por agr)
+  </p>
+  </div>
+</div>
 <form method='GET'>
   {{formulario.as_p}}
-  <button type='submit'>Buscar</button>
+      <button class="button-2" role="button">Buscar</button>  
 </form>
 
 {% if resultado %}
