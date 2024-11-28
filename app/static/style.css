@@ -198,8 +198,6 @@ h1 {
   text-align: right;
   display: flex;
   flex-direction: column;
-  
-
 }
 
 .linhaDisciplinas{
@@ -251,26 +249,22 @@ h1 {
 }
 
 .card {
-  border: 3px ;
-  width:200px;
+  width:250px;
+  height: 200px;
   border-radius: 10px;
   padding: 5px 20px;
   background-color: gray;
-  place-items: center;
-  align-items: center;
-  margin: 5px auto;
+  margin: 5px;
   text-align: center;
   box-shadow: 0px 2px 4px darkgray;
-  & img {
-    height: 100px;
-    max-width: 300px;
-    margin-bottom: 10px;
-  }
+  background-size: cover;
+  background-position: center;
   & a {
     text-decoration: none;
+    width: 250px;
     color: black;
-    margin: 5px 0;
-    padding: 20px;
+    margin: 150px 0px;
+    padding: 10px;
     background-color: lightgray;
     border-radius: 10px;
     &:hover {

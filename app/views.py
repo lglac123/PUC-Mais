@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
+from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse, Discipline
 
 
 def home(request):
@@ -11,9 +11,9 @@ def home(request):
 
 
 def disciplinas(request):
-  courses = Course.objects.all()
+  disciplinas = Discipline.objects.all()
   return render(request, 'disciplinas.html', {
-    'courses': courses,
+    'disciplinas': disciplinas,
   })
 
 

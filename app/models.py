@@ -8,7 +8,7 @@ from django.db.models.deletion import CASCADE
 class Discipline(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length = 100)
-  image = models.FileField(blank=True, null=True)
+  image = models.ImageField(upload_to='backgrounds/', blank=True, null=True)
   def __str__(self):
     return f"{self.name}"
 
