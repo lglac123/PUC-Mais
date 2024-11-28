@@ -18,7 +18,7 @@ urlpatterns = [
     # path("aulas/", views.aulas),
     path('perfil/', views.perfil, name="perfil"),
     path('disciplinas/', views.disciplinas),
-    path("disciplinas/<str:course_name>", views.Disciplina, name="Disciplina"),
+    path("disciplinas/<str:discipline_name>", views.Disciplina, name="Disciplina"),
     path("disciplinas/<str:course_name>/aulas&listas/", views.aulas_listas_basic),
     path("disciplinas/<str:course_name>/provas/", views.provas),
     path("userCourse/create/", views.createUserCourse),
