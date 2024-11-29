@@ -27,19 +27,21 @@ def Disciplina(request, discipline_name):
 
   return render(request,'Disciplina.html', {
     'discipline_name': discipline_name,
-    'course': course,
+    'course': course[0],
     'usercourse': usercourse,
   })
 
 
-def aulas_listas_basic(request, course_name):
-  course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
-  topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
+def aulas_listas_basic(request, discipline_name):
+  discipline = Discipline.objects.get(name = discipline_name)
+  # course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
+  courses = Course.objects.filter(discipline__name = discipline_name).all()
+  topic = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
   videos=Video.objects.filter(topic__in=topic)
   listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
     'topics': topic,
-    'course': course[0],
+    'discipline': discipline,
     'videos':videos,
     'listas':listas,
   })
