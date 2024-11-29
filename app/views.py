@@ -29,10 +29,22 @@ def aulas_listas_basic(request, course_name):
   course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
   topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
   videos=Video.objects.filter(topic__in=topic)
+  listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
     'topics': topic,
     'course': course[0],
     'videos':videos,
+    'listas':listas,
+  })
+
+def listas(request,course_name,list_name):
+  course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
+  topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
+  lista=List.objects.filter(lista=list_name).all()
+  return render(request,"listas.html",{
+    'topic': topic,
+    'course': course[0],
+    'lista':lista,
   })
 
 
