@@ -36,6 +36,12 @@ h1 {
   color: white;
 }
 
+.navbar img {
+  height: 30px; 
+  margin-right: 10px; 
+  align-items: middle;
+}
+
 .userbar {
   background-color: lightgray; 
   font-size: 16px; 
