@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse
+from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse, Discipline
 
 
 def home(request):
@@ -11,15 +11,20 @@ def home(request):
 
 
 def disciplinas(request):
-  courses = Course.objects.all()
+  disciplinas = Discipline.objects.all()
   return render(request, 'disciplinas.html', {
-    'courses': courses,
+    'disciplinas': disciplinas,
   })
 
 
-def Disciplina(request, course_name):
-  course = Course.objects.get(name=course_name) # Pegar o curso a partir do nome no URL
+def Disciplina(request, discipline_name):
+  course = Course.objects.filter(discipline__name=discipline_name).all() # Pegar o curso a partir do nome no URL
   print(course)
+  try:
+    course = course[0]
+  except:
+    course = []
+
   return render(request,'Disciplina.html', {
     'course': course,
   })
@@ -52,6 +57,7 @@ def listas(request,course_name,list_name):
 def provas(request, course_name):
   course = Course.objects.get(name=course_name)
   provas = Exam.objects.filter(courses=course)
+  print(provas)
   return render(request, 'provas_antigas.html', {
     'provas': provas,
     'course_name': course,
