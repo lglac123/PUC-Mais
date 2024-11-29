@@ -20,7 +20,7 @@
             {% comment %} Fazer Matrícula em Todos? {% endcomment %}
             <p style="text-align: center; width:350px; font-weight: bold; margin: 5px; font-size: 18px">BÁSICO</p>
             {% if request.user.is_authenticated %}
-                {% if not course.usercourse_set.all %}
+                {% if not usercourse %}
                     <div class="section wide-section" 
                     style="background-image: url('/media/backgrounds/Basic-Background-BW.jpg');background-size: cover; background-position: center;">
                     {% comment %} Fazer GrayScale Apenas na Imagem {% endcomment %}

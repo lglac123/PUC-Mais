@@ -21,11 +21,14 @@ def Disciplina(request, discipline_name):
   course = Course.objects.filter(discipline__name=discipline_name).all() # Pegar o curso a partir do nome no URL
   try:
     course = course[0]
+    usercourse = UserCourse.objects.filter(course = course).filter(user=request.user).all()
   except:
     course = []
+    usercourse = []
 
   return render(request,'Disciplina.html', {
     'course': course,
+    'usercourse': usercourse,
   })
 
 
