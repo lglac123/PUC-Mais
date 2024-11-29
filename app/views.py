@@ -19,7 +19,7 @@ def disciplinas(request):
 
 def Disciplina(request, discipline_name):
   course = Course.objects.filter(discipline__name=discipline_name).all() # Pegar o curso a partir do nome no URL
-
+  print(discipline_name)
   if request.user.is_authenticated:
     usercourse = UserCourse.objects.filter(course__in = course).filter(user=request.user).all()
   else:
@@ -33,6 +33,7 @@ def Disciplina(request, discipline_name):
 
 
 def aulas_listas_basic(request, discipline_name):
+  print(discipline_name)
   discipline = Discipline.objects.get(name = discipline_name)
   # course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
   courses = Course.objects.filter(discipline__name = discipline_name).all()

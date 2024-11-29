@@ -31,7 +31,7 @@
                     </form>
                     </div>
                 {% else %}
-                <a href="/disciplinas/{{ course.name }}/aulas&listas/">
+                <a href="/disciplinas/{{ discipline_name }}/aulas&listas/">
                     <div class="section wide-section" 
                     style="background-image: url('/media/backgrounds/Basic-Background.jpg');background-size: cover; background-position: center;">
                     </div>
@@ -50,7 +50,8 @@
         
         <div class="vertical-align">
             <p style="text-align: center; width:350px; font-weight: bold; margin: 5px; font-size: 18px">AVANÇADO</p>
-            <a href="/disciplinas/{{ course.name }}/aulas&listas/">
+            <!-- <h2>{{ discipline_name }}</h2> -->
+            <a href="/disciplinas/{{ discipline_name }}/aulas&listas/">
                 <div class="section wide-section" 
                 style="background-image: url('/media/backgrounds/Advanced-Background.jpg');background-size: cover; background-position: center;">
                 </div>
