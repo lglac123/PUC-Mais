@@ -19,7 +19,6 @@ def disciplinas(request):
 
 def Disciplina(request, discipline_name):
   course = Course.objects.filter(discipline__name=discipline_name).all() # Pegar o curso a partir do nome no URL
-  print(course)
   try:
     course = course[0]
   except:
@@ -89,8 +88,7 @@ def createUserCourse(request):
     userCourse_new.status = 0
 
     userCourse_new.save()
-    print(userCourse_new)
-    return redirect("Disciplina", request.POST["course"])
+    # return redirect("Disciplina", request.POST["course"])
   return redirect("disciplinas")
 
 
@@ -99,7 +97,7 @@ def removeUserCourse(request):
   if request.method == "POST":
     usercourse = UserCourse.objects.get(id = request.POST["userCourseId"])
     usercourse.delete()
-    return redirect("home")
+    return redirect("perfil")
   
   usercourse = UserCourse.objects.get(id = request.GET.get("courseId"))
   print(usercourse)
