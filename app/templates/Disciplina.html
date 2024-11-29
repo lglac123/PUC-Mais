@@ -9,20 +9,26 @@
 {% block main %}
     <div class="userbar">
         {{ course.name }}
-        {% comment %} Colocar botão voltar e provas antigas{% endcomment %}
+        {% comment %} Colocar botão voltar{% endcomment %}
     </div>
     
     <div class="horizontal" style="margin: 30px 0px 10px 0px;">
         
         <div class="vertical-align">
+
+            {% comment %} Fazer Matrícula em Todos? {% endcomment %}
             <p style="text-align: center; width:350px; font-weight: bold; margin: 5px; font-size: 18px">BÁSICO</p>
             {% if request.user.is_authenticated %}
                 {% if not course.usercourse_set.all %}
+                    <div class="section wide-section" 
+                    style="background-image: url('/media/backgrounds/Basic-Background-BW.jpg');background-size: cover; background-position: center;">
+                    {% comment %} Fazer GrayScale Apenas na Imagem {% endcomment %}
                     <form action="/userCourse/create/" method="post">
                         {% csrf_token %}
                         <input name="course" value="{{ course }}" hidden>
-                        <button type="submit">Matricular-se no curso</button>
+                        <button class="button2" type="submit">Matricular-se no curso</button>
                     </form>
+                    </div>
                 {% else %}
                 <a href="/disciplinas/{{ course.name }}/aulas&listas/">
                     <div class="section wide-section" 
