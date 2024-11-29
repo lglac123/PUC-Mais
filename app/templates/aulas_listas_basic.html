@@ -16,23 +16,22 @@
 
   <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     <br>
+    {%for topic in topics%}
     {% for video in videos %}
-      <h4 class="card"style="border: gray">{{video.name}}</h4>
+      <h4 class="card central"style="border: gray;height: 25px;">{{video.name}}</h4>
       <br>
-      <div class="linhaDisciplinas"style=  "border:20px solid lightgray;background-color: lightgrey;">
+      <div class="linhaDisciplinas"style=  "width:500px;border-radius:10px;border:20px solid lightgray;background-color: lightgrey;">
         
         <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
       src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
       autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <div class="listas">
-          {%for lista in listas%}
-          <a href="/disciplinas/{{ course.name }}/aulas&listas/{{lista.name}}/">{{lista.name}}</a>
-          {%endfor%}
+          <a href="/disciplinas/{{ course.name }}/aulas&listas/{{topic.name}}/">{{topic.name}}</a>
         </div>
       </div>
       <br>
     {%endfor%}
-    
+    {%endfor%}
   </div>
   <br>
 {% endblock %}

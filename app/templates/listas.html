@@ -3,10 +3,22 @@
 {% load static %}
 
 {% block titulo %}
-  Videos e Listas
+  Listas
 {% endblock %}
 
 {% block main %}
-<h1></h1>
-
+<div class="central" style="flex-direction: column;">
+  <h3>Questões sobre {{ topic.name }}</h3>
+  <br>
+  
+  {% if questions %}
+    {% for question in questions %}
+      <div>
+        <p>{{ question.task }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Não há questões disponíveis para este tópico.</p>
+  {% endif %}
+</div>
 {% endblock %}

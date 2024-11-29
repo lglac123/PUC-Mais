@@ -75,7 +75,7 @@ class List(models.Model):
 
 class Question(models.Model):
   task = models.TextField()
-  list = models.ManyToManyField('List')
+  lista = models.ManyToManyField('List')
   topic = models.ForeignKey(Topic, on_delete = models.CASCADE, blank = True, null = True)
 
 class Option(models.Model):

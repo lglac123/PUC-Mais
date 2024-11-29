@@ -42,15 +42,22 @@ def aulas_listas_basic(request, course_name):
     'listas':listas,
   })
 
-def listas(request,course_name,list_name):
-  course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
-  topic = Topic.objects.filter(course=course[0].id).all() # Pegar todos os tópicos correlacionados a aquele curso
-  lista=List.objects.filter(lista=list_name).all()
-  return render(request,"listas.html",{
-    'topic': topic,
-    'course': course[0],
-    'lista':lista,
-  })
+def listas(request, course_name, topic_name):
+    course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
+    try:
+        topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
+    except Topic.DoesNotExist:
+        topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
+    
+    lista = List.objects.filter().all()  # Pegar a lista
+    questions = Question.objects.filter(topic=topic)  # Filtrar questões para o tópico
+    
+    return render(request, "listas.html", {
+        'topic': topic,  # Passando o tópico para o template
+        'course': course[0] if course else None,  # Verifique se o curso existe
+        'lista': lista,
+        'questions': questions,
+    })
 
 
 @login_required
