@@ -37,10 +37,11 @@ h1 {
 }
 
 .navbar img {
+  /* Jean */
   height: 30px; 
   margin-right: 10px; 
   align-items: middle;
-}
+} 
 
 .userbar {
   background-color: lightgray; 
