@@ -1,7 +1,4 @@
-html {
-  height: 100%; 
-  width: 100%
-}
+html {height: 100%; width: 100%}
   
 body {
   font-family: "Montserrat"; 
@@ -19,7 +16,8 @@ h1 {
 .navbar {
   background-color: lightgray; 
   overflow: hidden; 
-  position: sticky; 
+  position: sticky;
+  height: 44px; 
   top: 0; 
   box-shadow: 0px 2px 4px darkgray;
 }
@@ -38,6 +36,12 @@ h1 {
   color: white;
 }
 
+.navbar img {
+  height: 30px; 
+  margin-right: 10px; 
+  align-items: middle;
+}
+
 .userbar {
   background-color: lightgray; 
   font-size: 16px; 
@@ -45,17 +49,14 @@ h1 {
   margin: 20px; 
   padding: 10px; 
   border-radius: 5px;
+  position: relative;
+  z-index: -1;
 }
 
 .background {
   margin: 20px 200px; 
   background-color: lightgray; 
   border-radius:10px;
-}
-
-.p1 {
-  text-align: justify; 
-  padding: 10px 50px 20px 50px;
 }
 
 .central {
@@ -79,12 +80,12 @@ h1 {
   border-radius: 20px;
   }
 
-  .vertical-align {
-    display: flex; 
-    align-items: center; 
-    flex-direction: column; 
-    justify-content: center
-  }
+.vertical-align {
+  display: flex; 
+  align-items: center; 
+  flex-direction: column; 
+  justify-content: center
+}
 
 .loginbutton {
   background-color: gray;
@@ -115,6 +116,24 @@ h1 {
 
 .button1:hover {
   background-color: darkslategray; 
+  color: white; 
+  transition-duration: 0.3s;
+}
+
+.button2 {
+  background-color: lightgray;
+  border-radius: 6px;
+  border-color: white;
+  border-style: solid;
+  color: black;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Montserrat";
+}
+
+.button2:hover {
+  background-color: darkslategray;
   color: white; 
   transition-duration: 0.3s;
 }
@@ -161,14 +180,13 @@ h1 {
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
-  text-align: center;
   background-color: lightgray;
 }
 
 .wide-section {
-  flex: 1;
   margin: 0 10px; 
-  height: 300px; 
+  height: 250px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -198,8 +216,6 @@ h1 {
   text-align: right;
   display: flex;
   flex-direction: column;
-  
-
 }
 
 .linhaDisciplinas{
@@ -251,26 +267,22 @@ h1 {
 }
 
 .card {
-  border: 3px ;
-  width:200px;
+  width:250px;
+  height: 200px;
   border-radius: 10px;
   padding: 5px 20px;
   background-color: gray;
-  place-items: center;
-  align-items: center;
-  margin: 5px auto;
+  margin: 5px;
   text-align: center;
   box-shadow: 0px 2px 4px darkgray;
-  & img {
-    height: 100px;
-    max-width: 300px;
-    margin-bottom: 10px;
-  }
+  background-size: cover;
+  background-position: center;
   & a {
     text-decoration: none;
+    width: 250px;
     color: black;
-    margin: 5px 0;
-    padding: 20px;
+    margin: 150px 0px;
+    padding: 10px;
     background-color: lightgray;
     border-radius: 10px;
     &:hover {
@@ -288,11 +300,11 @@ h1 {
   border: 3px solid black;
   border-radius: 20px;
   width: 90%;
-  margin: 5px auto;
+  margin: 20px auto;
   padding: 30px;
-  /* & div {
-    flex: 1 1 800px;
-  } */
+  & div {
+    font-size: 1rem;
+  }
 }
 
 .exam {
@@ -303,10 +315,40 @@ h1 {
   width: 1000px;
   border-radius: 10px;
   padding: 20px;
-  background-color: gray;
+  /* background-color: rgb(165, 165, 165); */
   place-items: center;
   align-items: center;
-  margin: 5px auto;
+  margin: 15px auto;
   text-align: center;
   box-shadow: 0px 2px 4px darkgray;
+}
+
+
+.removeCourse {
+  background-color: rgba(227, 51, 51, 0.741);
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  transition: background-color 0.3s cubic-bezier(0.31, 0.09, 0.46, 1.04);
+  &:hover {
+    background-color: rgb(228, 124, 124);
+  }
+}
+
+.addFavorite {
+  background-color: aqua;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  transition: background-color 0.3s cubic-bezier(0.31, 0.09, 0.46, 1.04);
+  &:hover {
+    background-color: rgb(150, 255, 255);
+  }
+}
+
+.divider {
+  width: 95%;
+  margin: 5px auto;
+  border-top: 4px solid rgb(69, 68, 68);
+  border-radius: 3px;
 }

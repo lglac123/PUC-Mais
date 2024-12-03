@@ -13,19 +13,16 @@ urlpatterns = [
     path("users/signin/", views.createUser),
     path("users/login/", views.loginUser, name = "login"),
     path("users/logout/", views.logoutUser, name = "logout"),
+    path("users/edit/", views.editUser),
     path("", views.home, name = "home"),
     # path("aulas/", views.aulas),
-    path('perfil/', views.perfil),
-    path('disciplinas/', views.disciplinas),
-    path("disciplinas/<str:course_name>", views.Disciplina),
-    path("disciplinas/<str:course_name>/aulas&listas/", views.aulas_listas_basic),
+    path('perfil/', views.perfil, name="perfil"),
+    path('disciplinas/', views.disciplinas, name="disciplinas"),
+    path("disciplinas/<str:discipline_name>", views.Disciplina, name="Disciplina"),
+    path("disciplinas/<str:discipline_name>/aulas&listas/", views.aulas_listas_basic),
+    path("disciplinas/<str:course_name>/aulas&listas/<str:topic_name>/",views.listas),
     path("disciplinas/<str:course_name>/provas/", views.provas),
-    path("registerCourse/", views.userCourse),
+    path("userCourse/create/", views.createUserCourse),
+    path("userCourse/delete/", views.removeUserCourse),
+    path("userCourse/favorite/", views.favoriteUserCourseChange),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# if settings.DEBUG:
-#     urlpatterns += [
-#         url(r'^media/(?P<path> .*)$', serve, {
-#             'document_root': settings.MEDIA_ROOT,
-#         })
-#     ]

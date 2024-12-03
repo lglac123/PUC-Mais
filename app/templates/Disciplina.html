@@ -8,43 +8,70 @@
 
 {% block main %}
     <div class="userbar">
-        {{ course.name }}
+        <a style="position: absolute; left: 0; padding-left: 15px; text-decoration: none; color:black; z-index:1" 
+        href="/disciplinas/">&lt;&lt; Disciplinas</a>
+        <span style="align-items:central; font-weight: bold">{{ discipline_name }}</span>
     </div>
-    <img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+    
+    <div class="horizontal" style="margin: 30px 0px 10px 0px;">
+        
+        <div class="vertical-align">
 
-    <div class="horizontal">
-        <div class="section wide-section">
+            {% comment %} Fazer Matrícula em Todos? {% endcomment %}
+            <p style="text-align: center; width:350px; font-weight: bold; margin: 5px; font-size: 18px">BÁSICO</p>
             {% if request.user.is_authenticated %}
-                {% if not course.usercourse_set.all %}
-                    <form action="/registerCourse/" method="post">
+                {% if not usercourse %}
+                    <div class="section wide-section" 
+                    style="background-image: url('/media/backgrounds/Basic-Background-BW.jpg');background-size: cover; background-position: center;">
+                    {% comment %} Fazer GrayScale Apenas na Imagem {% endcomment %}
+                    <form action="/userCourse/create/" method="post">
                         {% csrf_token %}
-                        <input name="course" value="{{ course }}" hidden>
-                        <button type="submit">Matricular-se no curso</button>
+                        <input name="course" value="{{ course.name }}" hidden>
+                        <button class="button2" type="submit">Matricular-se no curso</button>
                     </form>
+                    </div>
                 {% else %}
-                    <p style="font-weight: bold; font-size: 24px; text-align: center; color:black">
-                        <a href="/disciplinas/{{ course.name }}/aulas&listas/">Básico</a>
-                    </p>
+                <a href="/disciplinas/{{ discipline_name }}/aulas&listas/">
+                    <div class="section wide-section" 
+                    style="background-image: url('/media/backgrounds/Basic-Background.jpg');background-size: cover; background-position: center;">
+                    </div>
+                </a>
                 {% endif %}
             {% else %}
-                <p style="font-weight: bold; font-size: 24px; text-align: center; color:black">
-                    <a href="/cadastro/">Cadastre-se</a>
-                </p>
+            <a href="/users/login/">
+                <div class="section wide-section" 
+                style="background-image: url('/media/backgrounds/Basic-Background.jpg');background-size: cover; background-position: center;">
+                </div>
+            </a>
             {% endif %}
-            <div style="justify-content: center;">
-                Aprenda sobre todos os tópicos da disciplinas por meio de videoaulas e listas de exercícios, para que você fique com 10 na matéria!
-            </div>
+            <p style="text-align: center; width:350px">Aprenda sobre todos cobrados na disciplina por meio de 
+                videoaulas e listas de exercícios para dominar matéria!</p>
         </div>
-        <div class="section wide-section">
-            <p style="font-weight: bold; font-size: 24px; text-align: center"><a href="/disciplinas/{{ course.name }}/aulas&listas/">Avançado</a></p>
-            <div style="justify-content: center;">
-                Se desafie ao aprender tópicos não ensinados nas aulas e amplie seus conhecimentos de forma independente!
-            </div>
+        
+        <div class="vertical-align">
+            <p style="text-align: center; width:350px; font-weight: bold; margin: 5px; font-size: 18px">AVANÇADO</p>
+            <!-- <h2>{{ discipline_name }}</h2> -->
+            <a href="/disciplinas/{{ discipline_name }}/aulas&listas/">
+                <div class="section wide-section" 
+                style="background-image: url('/media/backgrounds/Advanced-Background.jpg');background-size: cover; background-position: center;">
+                </div>
+            </a>
+            <p style="text-align: center; width:350px">Se desafie ao aprender tópicos não ensinados nas aulas e 
+                amplie seus conhecimentos de forma independente!</p>
         </div>
+
+        <div class="vertical-align">
+            <p style="text-align: center; width:350px; font-weight: bold; margin: 5px; font-size: 18px">PROVAS ANTERIORES</p>
+            <a href="/disciplinas/{{ course.name }}/provas/">
+                <div class="section wide-section" 
+                style="background-image: url('/media/backgrounds/Exams-Background.png');background-size: cover; background-position: center;">
+                </div>
+            </a>
+            <p style="text-align: center; width:350px">Confira como a disciplina foi cobrada nos anos anteriores para
+                treinar com conteúdos da própria PUC-Rio!
+            </p>
+        </div>
+
     </div>
 
-    <div class="section retangulinho">
-        <p style="font-weight: bold; font-size: 24px; text-align: center; color:black"><a href="/disciplinas/{{ course.name }}/provas/">Provas Antigas</a></p>
-    </div>
-    <br>
 {% endblock %}

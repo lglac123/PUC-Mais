@@ -3,36 +3,33 @@
 {% load static %}
 
 {% block titulo %}
-  Videos e Listas
+  Material Didático
 {% endblock %}
 
 {% block main %}
 
   <div class="userbar">
-    Aulas e Listas de {{course.name}}
+    Aulas / Listas - {{discipline.name}}
   </div>
-  <img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
-  <h3></h3>
 
-  <div class="container" style="display:flex;  flex-direction: column;width: 700px;border:gray">
+  <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     <br>
-    {% for video in videos %}
-    <h4 class="card"style="border: gray">{{video.name}}</h4>
-    <br>
-    <div class="linhaDisciplinas"style=  "background-color: lightgrey;">
-      
-      <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
-    src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
-    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <div class="listas">
-        <a href="/listas/">Lista 01</a>
-        <a href="/listas/">Lista 02</a>
-        <a href="/listas/">Lista 03</a>
-      </div>
-    </div>
-    <br>
+    {%for topic in topics%}
+      {% for video in videos %}
+        <h4 class="card central"style="border: gray;height: 25px;">{{video.name}}</h4>
+        <br>
+        <div class="linhaDisciplinas"style=  "width:500px;border-radius:10px;border:20px solid lightgray;background-color: lightgrey;">
+          
+          <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
+        src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
+        autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="listas">
+            <a href="/disciplinas/{{ discipline.name }}/aulas&listas/{{topic.name}}/">{{topic.name}}</a>
+          </div>
+        </div>
+        <br>
+      {%endfor%}
     {%endfor%}
-    
   </div>
   <br>
 {% endblock %}

@@ -8,7 +8,7 @@ from django.db.models.deletion import CASCADE
 class Discipline(models.Model):
   code = models.CharField(max_length=10)
   name = models.CharField(max_length = 100)
-  image = models.FileField(blank=True, null=True)
+  image = models.ImageField(upload_to='backgrounds/', blank=True, null=True)
   def __str__(self):
     return f"{self.name}"
 
@@ -27,6 +27,7 @@ class UserCourse(models.Model):
   course = models.ForeignKey(Course, on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   status = models.IntegerField(default=0)
+  favorite = models.IntegerField(default = 0)
 
   class Meta:
     unique_together = ('user', 'course')
@@ -74,7 +75,7 @@ class List(models.Model):
 
 class Question(models.Model):
   task = models.TextField()
-  list = models.ManyToManyField('List')
+  lista = models.ManyToManyField('List')
   topic = models.ForeignKey(Topic, on_delete = models.CASCADE, blank = True, null = True)
 
 class Option(models.Model):

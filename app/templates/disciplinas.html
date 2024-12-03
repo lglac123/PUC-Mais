@@ -8,69 +8,20 @@
 
 {% block main %}
     <h1>Disciplinas oferecidas</h1>
-
-    <img class="central" style="width: 300px; padding: 20px 0px 40px 0px" src="{% static 'LogoPUCMais.png' %}">
-
-    <!-- <div class="container-grid">
-        {% for course in courses %}
-            <div class="card vertical-align"style="margin-top:50px;margin-bottom:50px">
-                <div>
-                    <p>{{ course.name }}</p>
-                </div>
-                <div class="central">
-                    <a class="button1 central" style="margin-bottom:10px;height: 65px;" href="{{ course.name }}">
-                        {{ course.name }}
-                    </a>
-                </div>
-                <div><h4>DIFICULDADE: {{course.dificulty}}</h4></div>
-            </div>
-        {% endfor %}
-    </div> -->
     
     <div class="container-grid">
-        {% for course in courses %}
+        {% for disciplina in disciplinas %}
+            {% if disciplina.image %}
+            <div class="card" 
+            style="background-image: url('{{disciplina.image.url}}');">
+            {% else %}
             <div class="card">
-                <div>
-                    <p>{{ course.name }}</p>
-                </div>
+            {% endif %}
                 <div class="central">
-                    <a href="{{ course.name }}">{{ course.name }}</a>
-                </div>
-                <div>
-                    <h4>DIFICULDADE: {{course.dificulty}}</h4>
+                    <a href="{{ disciplina.name }}">{{ disciplina.name }}</a>
                 </div>
             </div>
         {% endfor %}
     </div>
 
-    <!-- <div class="divretangulo">
-        <div class="retanguloGrande">
-            <div class="linhaDisciplinas">
-                <div class="disciplina">
-                    <a href="/Disciplina/">Calculo a uma variável</a>
-                    <div class="progresso"><h6>0%</h6></div>
-                </div>
-
-                <div class="disciplina">
-                    <a href="/Disciplina/">Modelagem e programação</a>
-                    <div class="progresso"><h6>0%</h6></div>
-                </div>
-            </div>
-
-            <h5></h5>
-
-            <div class="linhaDisciplinas">
-                <div class="disciplina">
-                    <a href="/Disciplina/">Calculo a várias variáveis I</a>
-                    <div class="progresso"><h6>0%</h6></div>
-                </div>
-
-                <div class="disciplina">
-                    <a href="/Disciplina/">Programação em C</a>
-                    <div class="progresso"><h6>0%</h6></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h1></h1> -->
 {% endblock %}
