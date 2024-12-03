@@ -38,11 +38,11 @@ def home(request):
 
 @login_required
 def provas(request, course_name):
-  course = Course.objects.filter(name=course_name).all()
-  provas = Exam.objects.filter(courses__in=course)
-  print(provas, len(provas))
+  course = Course.objects.get(name=course_name)
+  provas = Exam.objects.filter(courses=course)
   return render(request, 'provas_antigas.html', {
     'provas': provas,
+    'course_name': course,
   })
 
 
