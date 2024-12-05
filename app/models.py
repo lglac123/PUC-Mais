@@ -17,6 +17,7 @@ class Discipline(models.Model):
 class Course(models.Model):
   name = models.CharField(max_length=40)
   dificulty = models.IntegerField(default=0)
+  isadvanced = models.BooleanField(default=False)
   # A relação com a prova já está sendo descrito no ManyToMany do Exam
   discipline = models.ForeignKey(Discipline, blank=True, null=True, on_delete = models.CASCADE)
   def __str__(self):

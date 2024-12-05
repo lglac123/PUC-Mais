@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -18,25 +17,43 @@ def disciplinas(request):
 
 
 def Disciplina(request, discipline_name):
-  course = Course.objects.filter(discipline__name=discipline_name).all() # Pegar o curso a partir do nome no URL
-  print(discipline_name)
+  try: # Tô nem aí para beleza do código
+    course_basic = Course.objects.get(discipline__name = discipline_name, isadvanced = False)
+  except:
+    course_basic = None
+
+  try:
+    course_advanced = Course.objects.get(discipline__name = discipline_name, isadvanced = True)
+  except:
+    course_advanced = None
+
+  usercourse_basic = False
+  usercourse_advanced = False
   if request.user.is_authenticated:
-    usercourse = UserCourse.objects.filter(course__in = course).filter(user=request.user).all()
-  else:
-    usercourse = []
+    try:
+      usercourse_basic = UserCourse.objects.filter(course = course_basic).filter(user=request.user).all()
+    except:
+      print("YAY")
+
+    try:
+      usercourse_advanced = UserCourse.objects.filter(course = course_advanced).filter(user = request.user).all()
+    except:
+      print("YAY")
+    print(usercourse_basic, usercourse_advanced)
 
   return render(request,'Disciplina.html', {
     'discipline_name': discipline_name,
-    'course': course[0],
-    'usercourse': usercourse,
+    'course_basic': course_basic,
+    'course_advanced': course_advanced,
+    'usercourse_basic': usercourse_basic,
+    'usercourse_advanced': usercourse_advanced,
   })
 
 
 def aulas_listas_basic(request, discipline_name):
-  print(discipline_name)
-  discipline = Discipline.objects.get(name = discipline_name)
-  # course = Course.objects.filter(name=course_name).all() # Pegar o curso a partir do nome no URL
-  courses = Course.objects.filter(discipline__name = discipline_name).all()
+  discipline = get_object_or_404(Discipline, name = discipline_name) # Discipline.objects.get(name = discipline_name)
+  courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
+  # E se for vazio?
   topic = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
   videos=Video.objects.filter(topic__in=topic)
   listas=List.objects.filter().all()
@@ -48,26 +65,27 @@ def aulas_listas_basic(request, discipline_name):
   })
 
 def listas(request, course_name, topic_name):
-    course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
-    try:
-        topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
-    except Topic.DoesNotExist:
-        topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
-    
-    lista = List.objects.filter().all()  # Pegar a lista
-    questions = Question.objects.filter(topic=topic)  # Filtrar questões para o tópico
-    
-    return render(request, "listas.html", {
-        'topic': topic,  # Passando o tópico para o template
-        'course': course[0] if course else None,  # Verifique se o curso existe
-        'lista': lista,
-        'questions': questions,
-    })
+  course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
+  try:
+    topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
+  except Topic.DoesNotExist:
+    topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
+  
+  lista = List.objects.filter().all()  # Pegar a lista
+  questions = Question.objects.filter(topic=topic)  # Filtrar questões para o tópico
+  
+  return render(request, "listas.html", {
+      'topic': topic,  # Passando o tópico para o template
+      'course': course[0] if course else None,  # Verifique se o curso existe
+      'lista': lista,
+      'questions': questions,
+  })
 
 
 @login_required
 def provas(request, course_name):
   course = Course.objects.get(name=course_name)
+  # E se não existir?
   provas = Exam.objects.filter(courses=course)
   print(provas)
   return render(request, 'provas_antigas.html', {
@@ -79,7 +97,6 @@ def provas(request, course_name):
 @login_required
 def perfil(request):
   courses = UserCourse.objects.filter(user=request.user)
-  # print(courses)
   return render(request,'perfil.html', {
     'userCourse': courses,
   })
@@ -94,12 +111,12 @@ def createUserCourse(request):
     userCourse_new.status = 0
 
     userCourse_new.save()
-    # return redirect("Disciplina", request.POST["course"])
-  return redirect("disciplinas")
+  return redirect("Disciplina", discipline_name = request.POST["discipline_name"])
 
 
 @login_required
 def removeUserCourse(request):
+  # E se não for post?
   if request.method == "POST":
     usercourse = UserCourse.objects.get(id = request.POST["userCourseId"])
     usercourse.delete()
@@ -116,11 +133,11 @@ def favoriteUserCourseChange(request):
   if request.method == "POST":
     print(request.POST["courseId"])
     usercourse = UserCourse.objects.get(id = request.POST["courseId"])
-
-    if usercourse.favorite == 0:
-      usercourse.favorite = 1
-    else:
-      usercourse.favorite = 0
+    usercourse.favorite = (usercourse + 1) % 2
+    # if usercourse.favorite == 0:
+    #   usercourse.favorite = 1
+    # else:
+    #   usercourse.favorite = 0
     usercourse.save()
 
   return redirect("perfil")  
@@ -140,9 +157,7 @@ def createUser(request):
 
 
 def loginUser(request):
-  print("ver se esta chamando a view")  
-  if request.method == "POST":  
-    print("ver se esta pegando o metodo")
+  if request.method == "POST":
     user = authenticate(
       username = request.POST["username"], 
       password = request.POST["password"]
