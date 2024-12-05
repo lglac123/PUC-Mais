@@ -11,8 +11,16 @@ def home(request):
 
 def disciplinas(request):
   disciplinas = Discipline.objects.all()
+
+  # Acredite que isso funciona. É para pegar as disciplinas que vc favoritou
+  favDisciplines = Discipline.objects.filter(id__in = Course.objects.filter(id__in = UserCourse.objects.filter(user=request.user, favorite=1).values_list('course_id', flat=True)).values_list('discipline', flat=True))
+  favNames = []
+  for favDiscipline in favDisciplines:
+    favNames.append(favDiscipline.name)
+  print(favNames)
   return render(request, 'disciplinas.html', {
     'disciplinas': disciplinas,
+    'favDisciplines': favNames,
   })
 
 
@@ -149,7 +157,7 @@ def favoriteUserCourseChange(request):
   if request.method == "POST":
     print(request.POST["courseId"])
     usercourse = UserCourse.objects.get(id = request.POST["courseId"])
-    usercourse.favorite = (usercourse + 1) % 2
+    usercourse.favorite = (usercourse.favorite + 1) % 2
     # if usercourse.favorite == 0:
     #   usercourse.favorite = 1
     # else:
