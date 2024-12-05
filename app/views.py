@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse, Discipline
-
+from .forms import BuscaAno
 
 def home(request):
   return render(request, 'home.html')
@@ -46,6 +46,22 @@ def aulas_listas_basic(request, discipline_name):
     'videos':videos,
     'listas':listas,
   })
+
+@login_required
+def BuscaAnoProva(request):
+    # Inicializa o formulário com os dados recebidos pelo GET
+    formulario = BuscaAno(request.GET or None)
+    resultado = None  # Inicializa o resultado como vazio
+
+    if formulario.is_valid():
+        nome = formulario.cleaned_data.get('nome')  
+        if nome:  
+            resultado = Exam.objects.filter(name__icontains=nome)
+    return render(
+        request,
+        'BuscaProva.html',
+        {'formulario': formulario, 'resultado': resultado}
+    )
 
 def listas(request, course_name, topic_name):
     course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
@@ -125,6 +141,9 @@ def favoriteUserCourseChange(request):
 
   return redirect("perfil")  
 
+
+def FAQ(request):
+  return render(request,'FAQ.html')
 
 def createUser(request):
   if request.method == "POST":  
