@@ -24,5 +24,7 @@ urlpatterns = [
     path("disciplinas/<str:course_name>/provas/", views.provas),
     path("userCourse/create/", views.createUserCourse),
     path("userCourse/delete/", views.removeUserCourse),
-    path("userCourse/favorite/", views.favoriteUserCourseChange),
+    path("userCourse/favorite/", views.favoriteUserCourseChange),    
+    path('filtroano/',views.BuscaAnoProva),
+    path('FAQ/',views.FAQ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
