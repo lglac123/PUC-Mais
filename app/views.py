@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import Course, Topic, Exam, Video, List, Question, Answer, Option, UserCourse, Discipline
-from .forms import BuscaAno
+from .forms import BuscaAno, BuscaQuestoesDireto
 
 def home(request):
   return render(request, 'home.html')
@@ -62,6 +62,30 @@ def BuscaAnoProva(request):
         'BuscaProva.html',
         {'formulario': formulario, 'resultado': resultado}
     )
+
+def BuscaDiretaQuestao(request):
+    formulario2 = BuscaQuestoesDireto(request.GET or None)
+    questions = None  # Inicializando como None
+    topico = None  # Inicializando como None
+    
+    if formulario2.is_valid():
+        topico = formulario2.cleaned_data.get('topico')  # Obtém o tópico do formulário
+        if topico:
+            # Filtrando o tópico pelo nome fornecido
+            resultado = Topic.objects.filter(name__icontains=topico).first()
+            if resultado:  # Verifica se o tópico existe
+                # Busca todas as questões relacionadas ao tópico
+                questions = Question.objects.filter(topic=resultado)
+    
+    # Renderiza o template com os dados
+    return render(request, "BuscaDiretaQuestoes.html", {
+        'formulario2': formulario2,
+        'topic': topico,  # Nome do tópico buscado
+        'questions': questions,  # Lista de questões ou None
+    })
+
+
+
 
 def listas(request, course_name, topic_name):
     course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL

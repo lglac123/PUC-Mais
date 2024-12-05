@@ -27,4 +27,5 @@ urlpatterns = [
     path("userCourse/favorite/", views.favoriteUserCourseChange),    
     path('filtroano/',views.BuscaAnoProva),
     path('FAQ/',views.FAQ),
+    path('BuscaQuestao/',views.BuscaDiretaQuestao),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

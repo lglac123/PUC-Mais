@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block main %}
+<link href="{% static 'styles.css'%}" rel="stylesheet" type="text/css" />
+<div class='formulario'>
+<h1>Buscar Questões</h1>
+<img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+<div class="background">
+  <div class="p1">
+  <p style="justify-content: center">
+    <h2>Como Encontrar Questões de uma Matéria?</h2>
+    <ul>
+        <li><strong>Digite o nome do tópico:</strong> No campo de busca, insira o nome do tópico que deseja procurar. Por exemplo, se você está buscando questões sobre "Cálculo Diferencial", digite exatamente isso.</li>
+        <li><strong>Clique em "Buscar":</strong> Após preencher o campo, clique no botão <em>Buscar</em>. O sistema irá procurar todas as questões relacionadas ao tópico que você digitou.</li>
+        <li><strong>Confira os resultados:</strong> Se houver questões cadastradas para o tópico informado, elas aparecerão na tela para que você possa visualizá-las. Caso nenhuma questão seja encontrada, revise o nome do tópico ou tente pesquisar outro termo.</li>
+    </ul>
+    <p>Dica: Certifique-se de digitar o nome do tópico corretamente e utilize palavras-chave que melhor representem o que você está procurando.</p>
+</div>
+  </p>
+  </div>
+</div>
+
+<form method="get">
+  {{ formulario2.as_p }}
+  <button class="button2" role="button">Buscar</button>  </form>
+
+{% if questions %}
+  <h2>Questões encontradas para o tópico: {{ topic }}</h2>
+  <ul>
+    {% for question in questions %}
+      <li class="background">{{ question.task }}</li>
+    {% endfor %}
+  </ul>
+{% elif topic %}
+  <p>Nenhuma questão encontrada para o tópico "{{ topic }}".</p>
+{% endif %}
+{% endblock %}
