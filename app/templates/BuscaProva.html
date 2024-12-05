@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block main %}
+<link href="{% static 'styles.css'%}" rel="stylesheet" type="text/css" />
+<div class='formulario'>
+<h1>Buscar Links</h1>
+<img class="central" style="width: 300px; padding: 80px 0px 20px 0px" src="{% static 'LogoPUCMais.png' %}">
+<div class="background">
+  <div class="p1">
+  <p style="justify-content: center">
+    Para Filtrar Links, Basta Escrever o código da disciplina, seguido pela prova que você deseja. Por exemplo, se você deseja acessar a P2 de ModProg, basta escrever CTC4002-P2. Em disciplinas
+    com provas Com Maple, como Cálculo, basta escrever, por exemplo, MAT4616-P1m ou MAT4616-P1, para acessar a prova sem maple.
+  </p>
+  </div>
+</div>
+<form method='GET'>
+  {{formulario.as_p}}
+      <button class="button2" role="button">Buscar</button>  
+</form>
+
+{% if resultado %}
+<h2>Lista de Resultados</h2>
+<ul> {% for Exam in resultado %}
+    <div class="exam">
+        <span style="font-size: 20px; margin-bottom:40px; text-align: center; width: 100%;">{{ Exam.name }} - {{ Exam.year }}.{{ Exam.semester }}</span>
+        <div style="flex-basis: 800px;">
+          <embed src="/media/{{ Exam.file }}" width="100%" height="500px" type="application/pdf">
+          <p><a href="/media/{{ Exam.file }}" target="_blank" rel="noopener noreferrer">Link da prova</a></p>
+        </div>
+        <div class="central">
+          <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="400" height="400" 
+          src="{{ Exam.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
+          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+  {% endfor %} </ul> 
+{% else %}
+<p> Nenhum resultado encontrado </p>
+{% endif %}
+</div>
+{% endblock %}
+
