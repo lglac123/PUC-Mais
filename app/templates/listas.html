@@ -7,19 +7,28 @@
 {% endblock %}
 
 {% block main %}
-    <br>
-    <h3 class="central">Questões sobre {{ topic.name }}</h3>
-    <br>
-    {% if questions %}
-      <div style="margin-left: 300px;margin-right: 300px;">
-      {% for question in questions %}
-        <div>
-          <p>{{ question.task }}</p>
-        </div>
-      {% endfor %}
+
+  <div class="userbar">
+    <a style="position: absolute; left: 0; padding-left: 15px; text-decoration: none; color:black;" 
+    href="/disciplinas/{{discipline.name}}">&lt;&lt; Voltar</a>
+    <span style="align-items:central; font-weight: bold">Aulas / Listas - {{discipline.name}}</span>
+    <a style="position: absolute; right: 0; padding-right: 15px; text-decoration: none; color:black;" 
+    href="/disciplinas/{{course.name}}/provas">Provas &gt;&gt;</a>
+  </div>
+
+  <div class="central" style="flex-direction: column;">
+    <h3>Questões sobre <u>{{ topic.name }}</u></h3>
+    
+    {% for question in questions %}
+      <div style="width: 90%; margin: 5px auto;">
+        <p style="font-size: 1.3rem; text-align: justify;">{{ question.task }}</p>
       </div>
-    {% else %}
-      <p class="central">Não há questões disponíveis para este tópico.</p>
+      <hr class="divider">
+    {% endfor %}
+
+    {% if not questions %}
+      <p>Não há questões disponíveis para este tópico.</p>
+
     {% endif %}
   </div>
 {% endblock %}

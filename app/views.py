@@ -60,30 +60,14 @@ def Disciplina(request, discipline_name):
 
 def aulas_listas_basic(request, discipline_name):
   discipline = get_object_or_404(Discipline, name = discipline_name) # Discipline.objects.get(name = discipline_name)
-  courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
-  # E se for vazio?
-  topics = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
-  # videos=Video.objects.filter(topic__in=topic)
-
-  def get_video_for_topic(topic):
-    try:
-        return Video.objects.get(topic=topic)
-    except Video.DoesNotExist:
-        return None  # Retorna None caso o vídeo não exista
-
-  topics_with_videos = [
-        {
-            "topic": topic,
-            "video": get_video_for_topic(topic)  # Filtra vídeos do tópico atual
-        }
-        for topic in topics
-    ]
-  listas=List.objects.filter().all()
+  topic = Topic.objects.filter(course__in=Course.objects.filter(discipline__name = discipline_name).all()).all() # Pegar todos os tópicos correlacionados a aquele curso
+  course = Course.objects.filter(discipline__name = discipline_name)[0]
   return render(request, "aulas_listas_basic.html",{
-    'topics_with_videos': topics_with_videos,
+    'topics': topic,
     'discipline': discipline,
-    'listas':listas,
+    'course': course,
   })
+
 
 @login_required
 def BuscaAnoProva(request):
@@ -101,21 +85,21 @@ def BuscaAnoProva(request):
         {'formulario': formulario, 'resultado': resultado}
     )
 
-def listas(request, course_name, topic_name):
-  course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
+def listas(request, discipline_name, topic_name):
+  discipline = Discipline.objects.get(name=discipline_name)  # Pegar o curso a partir do nome no URL
+  course_basic = Course.objects.get(discipline = discipline, isadvanced = 0)
   try:
-    topic = Topic.objects.filter(name=topic_name)  # Pega o único tópico pelo nome
+    topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
   except Topic.DoesNotExist:
-    topic = None  # Se não encontrar, o tópico será None
-  
-  lista = List.objects.filter().all()  # Pegar a lista
-  questions = Question.objects.filter(topic__in=topic)  # Filtrar questões para o tópico
+    topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
+  questions = Question.objects.filter(topic=topic).all()  # Filtrar questões para o tópico
+
   
   return render(request, "listas.html", {
-      'topic': topic,  # Passando o tópico para o template
-      'course': course[0] if course else None,  # Verifique se o curso existe
-      'lista': lista,
-      'questions': questions,
+    'topic': topic,  # Passando o tópico para o template
+    'discipline': discipline,  # Verifique se o curso existe
+    'questions': questions,
+    'course': course_basic,
   })
 
 
