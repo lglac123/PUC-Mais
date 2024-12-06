@@ -7,18 +7,19 @@
 {% endblock %}
 
 {% block main %}
-  <div class="central" style="flex-direction: column;">
-    <h3>Questões sobre {{ topic.name }}</h3>
     <br>
-    
+    <h3 class="central">Questões sobre {{ topic.name }}</h3>
+    <br>
     {% if questions %}
+      <div style="margin-left: 300px;margin-right: 300px;">
       {% for question in questions %}
         <div>
           <p>{{ question.task }}</p>
         </div>
       {% endfor %}
+      </div>
     {% else %}
-      <p>Não há questões disponíveis para este tópico.</p>
+      <p class="central">Não há questões disponíveis para este tópico.</p>
     {% endif %}
   </div>
 {% endblock %}

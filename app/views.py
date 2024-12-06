@@ -106,7 +106,7 @@ def listas(request, course_name, topic_name):
   try:
     topic = Topic.objects.filter(name=topic_name)  # Pega o único tópico pelo nome
   except Topic.DoesNotExist:
-    topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
+    topic = None  # Se não encontrar, o tópico será None
   
   lista = List.objects.filter().all()  # Pegar a lista
   questions = Question.objects.filter(topic__in=topic)  # Filtrar questões para o tópico
