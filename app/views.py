@@ -13,14 +13,14 @@ def disciplinas(request):
   disciplinas = Discipline.objects.all()
 
   # Acredite que isso funciona. É para pegar as disciplinas que vc favoritou
-  favDisciplines = Discipline.objects.filter(id__in = Course.objects.filter(id__in = UserCourse.objects.filter(user=request.user, favorite=1).values_list('course_id', flat=True)).values_list('discipline', flat=True))
-  favNames = []
-  for favDiscipline in favDisciplines:
-    favNames.append(favDiscipline.name)
-  print(favNames)
+  # favDisciplines = Discipline.objects.filter(id__in = Course.objects.filter(id__in = UserCourse.objects.filter(user=request.user, favorite=1).values_list('course_id', flat=True)).values_list('discipline', flat=True))
+  # favNames = []
+  # for favDiscipline in favDisciplines:
+  #   favNames.append(favDiscipline.name)
+  # print(favNames)
   return render(request, 'disciplinas.html', {
     'disciplinas': disciplinas,
-    'favDisciplines': favNames,
+    # 'favDisciplines': favNames,
   })
 
 
@@ -85,6 +85,7 @@ def BuscaAnoProva(request):
         {'formulario': formulario, 'resultado': resultado}
     )
 
+
 def listas(request, discipline_name, topic_name):
   discipline = Discipline.objects.get(name=discipline_name)  # Pegar o curso a partir do nome no URL
   course_basic = Course.objects.get(discipline = discipline, isadvanced = 0)
@@ -104,14 +105,16 @@ def listas(request, discipline_name, topic_name):
 
 
 @login_required
-def provas(request, course_name):
-  course = Course.objects.get(name=course_name)
-  # E se não existir?
-  provas = Exam.objects.filter(courses=course)
+def provas(request, discipline_name):
+  discipline = Discipline.objects.get(name = discipline_name)
+  courses = Course.objects.filter(discipline__name=discipline_name)
+  print(courses)
+  provas = Exam.objects.filter(courses__in=courses)
   print(provas)
   return render(request, 'provas_antigas.html', {
     'provas': provas,
-    'course_name': course,
+    'course_name': courses[0],
+    'discipline': discipline,
   })
 
 
