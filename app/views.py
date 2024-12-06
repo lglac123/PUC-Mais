@@ -11,8 +11,16 @@ def home(request):
 
 def disciplinas(request):
   disciplinas = Discipline.objects.all()
+
+  # Acredite que isso funciona. É para pegar as disciplinas que vc favoritou
+  favDisciplines = Discipline.objects.filter(id__in = Course.objects.filter(id__in = UserCourse.objects.filter(user=request.user, favorite=1).values_list('course_id', flat=True)).values_list('discipline', flat=True))
+  favNames = []
+  for favDiscipline in favDisciplines:
+    favNames.append(favDiscipline.name)
+  print(favNames)
   return render(request, 'disciplinas.html', {
     'disciplinas': disciplinas,
+    'favDisciplines': favNames,
   })
 
 
@@ -53,9 +61,10 @@ def Disciplina(request, discipline_name):
 def aulas_listas_basic(request, discipline_name):
   discipline = get_object_or_404(Discipline, name = discipline_name) # Discipline.objects.get(name = discipline_name)
   courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
-  # E se for vazio?
   topic = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
+  print(topic)
   videos=Video.objects.filter(topic__in=topic)
+  print(videos)
   listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
     'topics': topic,
@@ -83,12 +92,12 @@ def BuscaAnoProva(request):
 def listas(request, course_name, topic_name):
   course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
   try:
-    topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
+    topic = Topic.objects.filter(name=topic_name)  # Pega o único tópico pelo nome
   except Topic.DoesNotExist:
     topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
   
   lista = List.objects.filter().all()  # Pegar a lista
-  questions = Question.objects.filter(topic=topic)  # Filtrar questões para o tópico
+  questions = Question.objects.filter(topic__in=topic)  # Filtrar questões para o tópico
   
   return render(request, "listas.html", {
       'topic': topic,  # Passando o tópico para o template
@@ -149,7 +158,7 @@ def favoriteUserCourseChange(request):
   if request.method == "POST":
     print(request.POST["courseId"])
     usercourse = UserCourse.objects.get(id = request.POST["courseId"])
-    usercourse.favorite = (usercourse + 1) % 2
+    usercourse.favorite = (usercourse.favorite + 1) % 2
     # if usercourse.favorite == 0:
     #   usercourse.favorite = 1
     # else:
