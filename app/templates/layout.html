@@ -12,10 +12,10 @@
         <title>{% block titulo %}{% endblock %}</title> <!-- Passar como um parâmetro ao carregar a página -->
     </head>
     <body>
-        <!-- Jean -->
         <div class="navbar">
-            <a href="/" style="display: flex; align-items: middle;"><img src="{% static 'LogoPUCMais.png' %}">
-             <spam style="padding: 12px 14px 12px 0px"> PUC+</spam></a>
+            <a href="/" class="navbar-home">
+                <img src="{% static 'LogoPUCMais.png' %}">
+                <span style="padding: 12px 14px 12px 0px"> PUC+</span></a>
             {% comment %} Criar Borda Leve Separação + Highlight Current Page {% endcomment %}
             <a href="/disciplinas/" style="padding: 12px 14px">Disciplinas</a>
             <a href="/filtroano/" style="padding: 12px 14px">Buscar Provas</a>

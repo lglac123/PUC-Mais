@@ -37,7 +37,6 @@ h1 {
 }
 
 .navbar img {
-  /* Jean */
   height: 30px; 
   margin-right: 10px; 
   align-items: middle;
@@ -69,7 +68,7 @@ h1 {
 }
 
 .sectionrectangle {
-  height: 350px; width: 300px;
+  height: 330px; width: 280px;
   display:flex;
   background-color: lightgray;
   border-radius: 20px;
@@ -381,4 +380,10 @@ ol > li::marker {
 
 .search-bar {
   background-color: lightgray;
+}
+
+.navbar-home {
+  display: flex; 
+  align-items: middle; 
+  border-right: 2px solid darkgray;
 }

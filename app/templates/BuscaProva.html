@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block titulo %}
+  Buscar Provas
+{% endblock %}
+
 {% block main %}
 <link href="{% static 'styles.css'%}" rel="stylesheet" type="text/css" />
 
@@ -19,21 +23,28 @@
 </form>
 
 {% if resultado %}
-<h2 class="central">Resultados</h2>
-<ul> {% for Exam in resultado %}
-    <div class="container">
-        <span class="central" style="font-size: 20px">{{ Exam.name }} - {{ Exam.year }}.{{ Exam.semester }}</span>
-        <div class="horizontal">
-        <p><a href="/media/{{ Exam.file }}" target="_blank" rel="noopener noreferrer">Prova</a></p>
-          <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="400" height="400" 
-          src="{{ Exam.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
-          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+<h2 class="central" style="margin: 70px 0px 10px 0px">Resultados</h2>
+
+<div style="display: flex; justify-content: center; flex-wrap: wrap; margin: auto; gap: 20px">
+  {% for exam in resultado %}
+    <div style="display: flex; align-items: center; flex-direction: column">
+      <p style="font-size: 20px; margin-bottom:10px"> {{ exam.year }}.{{ exam.semester }}</p> 
+      <div class="sectionrectangle vertical-align">
+        <iframe style="margin-top: 10px; margin-bottom: 20px; border: 10px solid black; border-radius: 5px" width="200" height="200" 
+        src="{{ exam.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
+        autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <span><a class="slink_button" style="font-size: 16px" 
+        href="/media/{{ exam.file }}" target="_blank" rel="noopener noreferrer">{{ exam.name }}</a></span>
       </div>
-  {% endfor %} </ul> 
+    </div>
+  {% endfor %}
+</div>  
+
 {% else %}
 <p class="central"> Nenhum resultado encontrado </p>
 {% endif %}
+<br>
 </div>
+
 {% endblock %}
 
