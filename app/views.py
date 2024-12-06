@@ -94,6 +94,7 @@ def listas(request, discipline_name, topic_name):
   except Topic.DoesNotExist:
     topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
   questions = Question.objects.filter(topic=topic).all()  # Filtrar questões para o tópico
+
   
   return render(request, "listas.html", {
     'topic': topic,  # Passando o tópico para o template
