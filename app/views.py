@@ -13,14 +13,14 @@ def disciplinas(request):
   disciplinas = Discipline.objects.all()
 
   # Acredite que isso funciona. É para pegar as disciplinas que vc favoritou
-  favDisciplines = Discipline.objects.filter(id__in = Course.objects.filter(id__in = UserCourse.objects.filter(user=request.user, favorite=1).values_list('course_id', flat=True)).values_list('discipline', flat=True))
-  favNames = []
-  for favDiscipline in favDisciplines:
-    favNames.append(favDiscipline.name)
-  print(favNames)
+  # favDisciplines = Discipline.objects.filter(id__in = Course.objects.filter(id__in = UserCourse.objects.filter(user=request.user, favorite=1).values_list('course_id', flat=True)).values_list('discipline', flat=True))
+  # favNames = []
+  # for favDiscipline in favDisciplines:
+  #   favNames.append(favDiscipline.name)
+  # print(favNames)
   return render(request, 'disciplinas.html', {
     'disciplinas': disciplinas,
-    'favDisciplines': favNames,
+    # 'favDisciplines': favNames,
   })
 
 
@@ -108,6 +108,7 @@ def listas(request, discipline_name, topic_name):
 def provas(request, discipline_name):
   discipline = Discipline.objects.get(name = discipline_name)
   courses = Course.objects.filter(discipline__name=discipline_name)
+  print(courses)
   provas = Exam.objects.filter(courses__in=courses)
   print(provas)
   return render(request, 'provas_antigas.html', {
