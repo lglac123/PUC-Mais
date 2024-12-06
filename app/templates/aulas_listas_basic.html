@@ -14,21 +14,24 @@
 
   <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     <br>
-    {%for topic in topics%}
-      {% for video in videos %}
-        <h4 class="card central"style="border: gray;height: 25px;">{{topic.name}}</h4>
+    {%for topic in topics_with_videos%}
+        <h4 class="card central"style="border: gray;height: 25px;">{{topic.topic.name}}</h4>
         <br>
+        
         <div class="linhaDisciplinas"style=  "width:500px;border-radius:10px;border:20px solid lightgray;background-color: lightgrey;">
-          
+          {% if topic.video %}
           <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
-        src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
+        src="{{topic.video.link}}" title="{{topic.video.name}}" frameborder="0" allow="accelerometer; 
         autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="listas">
-            <a href="/disciplinas/{{ discipline.name }}/aulas&listas/{{topic.name}}/">{{topic.name}}</a>
+          {%else%}
+            <h3>Haile Samalenko</h3>
+          {%endif%}  
+        <div class="listas">
+            <a href="/disciplinas/{{ discipline.name }}/aulas&listas/{{topic.topic.name}}/">{{topic.topic.name}}</a>
           </div>
+
         </div>
         <br>
-      {%endfor%}
     {%endfor%}
   </div>
   <br>

@@ -54,13 +54,27 @@ def aulas_listas_basic(request, discipline_name):
   discipline = get_object_or_404(Discipline, name = discipline_name) # Discipline.objects.get(name = discipline_name)
   courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
   # E se for vazio?
-  topic = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
-  videos=Video.objects.filter(topic__in=topic)
+  topics = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
+  # videos=Video.objects.filter(topic__in=topic)
+
+  def get_video_for_topic(topic):
+    try:
+        return Video.objects.get(topic=topic)
+    except Video.DoesNotExist:
+        return None  # Retorna None caso o vídeo não exista
+
+  topics_with_videos = [
+        {
+            "topic": topic,
+            "video": get_video_for_topic(topic)  # Filtra vídeos do tópico atual
+        }
+        for topic in topics
+    ]
+
   listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
-    'topics': topic,
+    'topics_with_videos': topics_with_videos,
     'discipline': discipline,
-    'videos':videos,
     'listas':listas,
   })
 
@@ -149,7 +163,7 @@ def favoriteUserCourseChange(request):
   if request.method == "POST":
     print(request.POST["courseId"])
     usercourse = UserCourse.objects.get(id = request.POST["courseId"])
-    usercourse.favorite = (usercourse + 1) % 2
+    usercourse.favorite = (usercourse.favorite + 1) % 2
     # if usercourse.favorite == 0:
     #   usercourse.favorite = 1
     # else:
