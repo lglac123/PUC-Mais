@@ -60,15 +60,11 @@ def Disciplina(request, discipline_name):
 
 def aulas_listas_basic(request, discipline_name):
   discipline = get_object_or_404(Discipline, name = discipline_name) # Discipline.objects.get(name = discipline_name)
-  # courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
   topic = Topic.objects.filter(course__in=Course.objects.filter(discipline__name = discipline_name).all()).all() # Pegar todos os tópicos correlacionados a aquele curso
-  videos=Video.objects.filter(topic__in=topic)
   course = Course.objects.filter(discipline__name = discipline_name)[0]
-  listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
-    'topics_with_videos': topics_with_videos,
+    'topics': topic,
     'discipline': discipline,
-    'listas':listas,
     'course': course,
   })
 
