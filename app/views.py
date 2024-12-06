@@ -76,9 +76,9 @@ def BuscaAnoProva(request):
     resultado = None  # Inicializa o resultado como vazio
 
     if formulario.is_valid():
-        nome = formulario.cleaned_data.get('nome')  
-        if nome:  
-            resultado = Exam.objects.filter(name__icontains=nome)
+      nome = formulario.cleaned_data.get('nome')  
+      if nome:  
+          resultado = Exam.objects.filter(name__icontains=nome)
     return render(
         request,
         'BuscaProva.html',
@@ -90,12 +90,12 @@ def listas(request, discipline_name, topic_name):
   discipline = Discipline.objects.get(name=discipline_name)  # Pegar o curso a partir do nome no URL
   course_basic = Course.objects.get(discipline = discipline, isadvanced = 0)
   try:
-    topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
+    topic = Topic.objects.filter(course__in=Course.objects.filter(discipline__name = discipline_name)).get(name=topic_name)  # Pega o único tópico pelo nome
   except Topic.DoesNotExist:
     topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
   questions = Question.objects.filter(topic=topic).all()  # Filtrar questões para o tópico
 
-  
+  print(topic)
   return render(request, "listas.html", {
     'topic': topic,  # Passando o tópico para o template
     'discipline': discipline,  # Verifique se o curso existe
