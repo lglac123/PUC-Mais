@@ -60,19 +60,19 @@ def Disciplina(request, discipline_name):
 
 def aulas_listas_basic(request, discipline_name):
   discipline = get_object_or_404(Discipline, name = discipline_name) # Discipline.objects.get(name = discipline_name)
-  courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
-  print(courses)
-  topic = Topic.objects.filter(course__in=courses).all() # Pegar todos os tópicos correlacionados a aquele curso
-  print(topic)
+  # courses = Course.objects.filter(discipline__name = discipline_name).all() # Pegar os cursos a partir do nome no URL
+  topic = Topic.objects.filter(course__in=Course.objects.filter(discipline__name = discipline_name).all()).all() # Pegar todos os tópicos correlacionados a aquele curso
   videos=Video.objects.filter(topic__in=topic)
-  print(videos)
+  course = Course.objects.filter(discipline__name = discipline_name)[0]
   listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
     'topics': topic,
     'discipline': discipline,
     'videos':videos,
     'listas':listas,
+    'course': course,
   })
+
 
 @login_required
 def BuscaAnoProva(request):
