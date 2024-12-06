@@ -8,9 +8,13 @@
 
 {% block main %}
 
-  <div class="userbar">
-    Aulas / Listas - {{discipline.name}}
-  </div>
+<div class="userbar">
+  <a style="position: absolute; left: 0; padding-left: 15px; text-decoration: none; color:black;" 
+  href="/disciplinas/{{discipline.name}}">&lt;&lt; Voltar</a>
+  <span style="align-items:central; font-weight: bold">Aulas / Listas - {{discipline.name}}</span>
+  <a style="position: absolute; right: 0; padding-right: 15px; text-decoration: none; color:black;" 
+  href="/disciplinas/{{discipline.name}}/provas">Provas &gt;&gt;</a>
+</div>
 
   <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     <br>

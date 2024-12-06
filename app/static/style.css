@@ -20,13 +20,13 @@ h1 {
   height: 44px; 
   top: 0; 
   box-shadow: 0px 2px 4px darkgray;
+  z-index: 1;
 }
 
 .navbar a {
   float: left; 
   color: black; 
   text-align: center; 
-  padding: 12px 14px; 
   text-decoration: none; 
   font-size: 17px;
 }
@@ -41,6 +41,7 @@ h1 {
   height: 30px; 
   margin-right: 10px; 
   align-items: middle;
+  padding: 7px 0px 0px 10px;
 } 
 
 .userbar {
@@ -51,7 +52,6 @@ h1 {
   padding: 10px; 
   border-radius: 5px;
   position: relative;
-  z-index: -1;
 }
 
 .background {
