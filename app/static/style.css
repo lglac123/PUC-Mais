@@ -81,6 +81,15 @@ h1 {
   justify-content: center
 }
 
+.horizontal-align {
+  display: flex; 
+  align-items: center; 
+  flex-direction: row; 
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .loginbutton {
   background-color: gray;
   border-radius: 5px;
@@ -307,6 +316,17 @@ h1 {
   }
 }
 
+.card2 {
+  height: 170px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  background-color: lightgray;
+  margin: 5px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
 .container-exam {
   display: flex;
   flex-wrap: wrap;
@@ -339,32 +359,38 @@ h1 {
 
 
 .removeCourse {
-  background-color: rgba(227, 51, 51, 0.741);
-  border-radius: 10px;
+  background-color: white;
+  border-radius: 6px;
   margin-top: 10px;
-  padding: 5px;
+  padding: 7px;
+  border-color: lightgray;
+  border-style: solid;
+  cursor: pointer;
   transition: background-color 0.3s cubic-bezier(0.31, 0.09, 0.46, 1.04);
   &:hover {
-    background-color: rgb(228, 124, 124);
+    background-color: red;
   }
 }
 
 .addFavorite {
-  background-color: aqua;
-  border-radius: 10px;
+  background-color: white;
+  border-radius: 6px;
+  border-color: lightgray;
+  border-style: solid;
   margin-top: 10px;
-  padding: 5px;
+  padding: 7px;
+  cursor: pointer;
   transition: background-color 0.3s cubic-bezier(0.31, 0.09, 0.46, 1.04);
   &:hover {
-    background-color: rgb(150, 255, 255);
+    background-color: darkslategray;
   }
 }
 
 .divider {
-  width: 95%;
-  margin: 5px auto;
-  border-top: 4px solid rgb(69, 68, 68);
-  border-radius: 3px;
+  width: 30%;
+  margin: 50px auto;
+  border-top: 4px solid darkslategray;
+  border-radius: 10px;
 }
 
 .container {

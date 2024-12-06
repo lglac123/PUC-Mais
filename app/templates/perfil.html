@@ -7,28 +7,19 @@
 {% endblock %}
 
 {% block main %}
-    <div class="userbar">
-        Bem vindo, {{ request.user.username }}!
-    </div>
-    <span class="central"style="width: 100%; font-size: 20px; margin-bottom: 10px;"><h3>Detalhes da conta</h3></span>
-    <div class="container-exam" style="border: 3px solid lightgray;justify-content: space-around; text-align: center; width:1000px">
-        <div style="border: 3px solid lightgray; border-radius: 10px; padding: 5px 10px; background-color: gray;width:350px;">
-            <h2 style="color:lightgray;">Email:</h2>
-            <p style="font-size: 1.3rem;">{{ request.user.email }}</p>
-        </div>
-        <div style="border: 3px solid lightgray; border-radius: 10px; padding: 5px 10px; background-color: gray;width:350px;">
-            <h2 style="color:lightgray;">Username:</h2>
-            <p style="font-size: 1.3rem;">{{ request.user.username }}</p>
-        </div>
+    <h1>Detalhes da conta</h1>
+    <div class="container horizontal">
+        <p><b>Usuário: </b>{{ request.user.username }}</p>    
+        <p><b>Email: </b>{{ request.user.email }}</p>
     </div>
     
     <hr class="divider">
-    <span class="central"style="width: 100%; font-size: 20px; margin-bottom: 10px;"><h3>Disciplinas Favoritas</h3></span>
-    <div class="container-exam" style="border: 3px solid lightgray;justify-content: space-around; text-align: center;width:1800px;">
+    <h2 class="central" style="margin-bottom: 10px">Disciplinas Favoritas</h2>
+    <div class="horizontal-align">
         {% for course in userCourse %}
             {%if course.favorite == 1 %}
-                <div class="card"style="width:330px;">
-                    <p><b><a href="/disciplinas/{{ course.course.discipline }}/aulas&listas/">{{ course.course.name }}</a></b></p>
+                <div class="card2"style="width:330px;">
+                    <p><b><a class="slink_button" style="font-size:16px; color:black" href="/disciplinas/{{ course.course.discipline }}/aulas&listas/">{{ course.course.name }}</a></b></p>
                     <p>Dificuldade: {{ course.course.dificulty }}</p>
                     <p class="central">Status: {{ course.status }}</p>
                     <form action="/userCourse/favorite/" method="post">
@@ -42,22 +33,24 @@
     </div>
 
     <hr class="divider">
-    <span class="central"style="width: 100%; font-size: 20px; margin-bottom: 10px;"><h3>Minhas Disciplinas</h3></span>
-    <div class="container-exam" style="border: 3px solid lightgray;justify-content: space-around; text-align: center;width:1800px;">
+    <h2 class="central" style="margin-bottom: 10px;">Minhas Disciplinas</h2>
+    <div class="horizontal-align">
         {% for course in userCourse %}
-            <div class="card" style="width:330px">
-                <p><b><a href="/disciplinas/{{ course.course.discipline }}/aulas&listas/">{{ course.course.name }}</a></b></p>
+            <div class="card2" style="width:330px">
+                <p><b><a class="slink_button" style="font-size:16px; color: black" href="/disciplinas/{{ course.course.discipline }}/aulas&listas/">{{ course.course.name }}</a></b></p>
                 <p>Dificuldade: {{ course.course.dificulty }}</p>
                 <p class="central">Status: {{ course.status }}</p>
-                <form action="/userCourse/delete/">
-                    <input hidden value="{{ course.id }}" required name="courseId">
-                    <button class="removeCourse" type="submit">REMOVER CURSO</button>
-                </form>
-                <form action="/userCourse/favorite/" method="post">
-                    {% csrf_token %}
-                    <input hidden value="{{ course.id }}" name="courseId" required>
-                    <button type="submit" class="addFavorite">ADICIONAR FAVORITO</button>
-                </form>
+                <div class="horizontal-align">
+                    <form action="/userCourse/favorite/" method="post">
+                        {% csrf_token %}
+                        <input hidden value="{{ course.id }}" name="courseId" required>
+                        <button type="submit" class="addFavorite">ADICIONAR FAVORITO</button>
+                    </form>
+                    <form action="/userCourse/delete/">
+                        <input hidden value="{{ course.id }}" required name="courseId">
+                        <button class="removeCourse" type="submit">REMOVER CURSO</button>
+                    </form>
+                </div>
             </div>
         {% endfor %}
     </div>
