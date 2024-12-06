@@ -66,9 +66,8 @@ def aulas_listas_basic(request, discipline_name):
   course = Course.objects.filter(discipline__name = discipline_name)[0]
   listas=List.objects.filter().all()
   return render(request, "aulas_listas_basic.html",{
-    'topics': topic,
+    'topics_with_videos': topics_with_videos,
     'discipline': discipline,
-    'videos':videos,
     'listas':listas,
     'course': course,
   })

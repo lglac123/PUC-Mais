@@ -18,7 +18,7 @@
 
   <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
     {%for topic in topics%}
-        <h4 class="card central"style="border: gray;height: 35px; width: 350px; margin-bottom: 10px">{{topic.name}}</h4>
+        <h4 class="card central"style="border: gray;height: 25px;">{{topic.name}}</h4>
 
         <div class="linhaDisciplinas" style="width:500px;border-radius:10px;border:20px solid lightgray;background-color: lightgrey; margin-bottom: 30px;">
           {% for video in topic.video_set.all %}
@@ -30,6 +30,7 @@
             <a style="text-align: center;" href="/disciplinas/{{ discipline.name }}/aulas&listas/{{topic.name}}/">{{topic.name}}</a>
           </div>
         </div>
+        <br>
     {%endfor%}
   </div>
 {% endblock %}
