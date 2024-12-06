@@ -8,11 +8,16 @@
 
 {% block main %}
 
-  <div class="userbar">
-    Aulas / Listas - {{discipline.name}}
-  </div>
+<div class="userbar">
+  <a style="position: absolute; left: 0; padding-left: 15px; text-decoration: none; color:black;" 
+  href="/disciplinas/{{discipline.name}}">&lt;&lt; Voltar</a>
+  <span style="align-items:central; font-weight: bold">Aulas / Listas - {{discipline.name}}</span>
+  <a style="position: absolute; right: 0; padding-right: 15px; text-decoration: none; color:black;" 
+  href="/disciplinas/{{discipline.name}}/provas">Provas &gt;&gt;</a>
+</div>
 
   <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
+<<<<<<< HEAD
     <br>
     {%for topic in topics_with_videos%}
         <h4 class="card central"style="border: gray;height: 25px;">{{topic.topic.name}}</h4>
@@ -28,11 +33,26 @@
           {%endif%}  
         <div class="listas">
             <a href="/disciplinas/{{ discipline.name }}/aulas&listas/{{topic.topic.name}}/">{{topic.topic.name}}</a>
+=======
+    {%for topic in topics%}
+        <h4 class="card central"style="border: gray;height: 25px;">{{topic.name}}</h4>
+
+        <div class="linhaDisciplinas"style=  "width:500px;border-radius:10px;border:20px solid lightgray;background-color: lightgrey;">
+          {% for video in topic.video_set.all %}
+            <iframe style="border: 5px solid black; border-radius: 5px" width="300" height="170" 
+            src="{{video.link}}" title="{{video.name}}" frameborder="0" allow="accelerometer; 
+            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          {% endfor %}
+          <div class="listas">
+            <a href="/disciplinas/{{ discipline.name }}/aulas&listas/{{topic.name}}/">{{topic.name}}</a>
+>>>>>>> b203d410d23c7359930819ccc759454e02c113d7
           </div>
 
         </div>
+<<<<<<< HEAD
         <br>
+=======
+>>>>>>> b203d410d23c7359930819ccc759454e02c113d7
     {%endfor%}
   </div>
-  <br>
 {% endblock %}
