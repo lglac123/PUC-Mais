@@ -19,7 +19,7 @@ h1 {
   position: sticky;
   height: 44px; 
   top: 0; 
-  box-shadow: 0px 2px 4px darkgray;
+  box-shadow: 0px 1px 4px darkgray;
   z-index: 1;
 }
 
@@ -52,12 +52,6 @@ h1 {
   padding: 10px; 
   border-radius: 5px;
   position: relative;
-}
-
-.background {
-  margin: 20px 200px; 
-  background-color: lightgray; 
-  border-radius:10px;
 }
 
 .central {
@@ -149,6 +143,26 @@ h1 {
   color: darkblue; 
   text-decoration: underline; 
   transition-duration: 0.2s;
+}
+
+.button3 {
+  background-color: white;
+  border-radius: 10px;
+  border-color: lightgray;
+  border-style: solid;
+  color: black;
+  padding: 7px 9px;
+  margin-left: 10px;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+.button3:hover {
+  background-color: darkslategray;
+  color: white; 
+  transition-duration: 0.3s;
 }
 
 .classborder {
@@ -316,7 +330,7 @@ h1 {
   width: 1000px;
   border-radius: 10px;
   padding: 20px;
-  /* background-color: rgb(165, 165, 165); */
+  background-color: rgb(165, 165, 165);
   place-items: center;
   align-items: center;
   margin: 15px auto;
@@ -352,4 +366,19 @@ h1 {
   margin: 5px auto;
   border-top: 4px solid rgb(69, 68, 68);
   border-radius: 3px;
+}
+
+.container {
+  background-color: lightgray; 
+  border-radius:10px; 
+  margin: 20px 150px; 
+  padding: 30px 60px 30px 40px; 
+}
+
+ol > li::marker {
+  font-weight: bold;
+}
+
+.search-bar {
+  background-color: lightgray;
 }
