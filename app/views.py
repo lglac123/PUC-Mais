@@ -85,21 +85,20 @@ def BuscaAnoProva(request):
         {'formulario': formulario, 'resultado': resultado}
     )
 
-def listas(request, course_name, topic_name):
-  course = Course.objects.filter(name=course_name).all()  # Pegar o curso a partir do nome no URL
+def listas(request, discipline_name, topic_name):
+  discipline = Discipline.objects.get(name=discipline_name)  # Pegar o curso a partir do nome no URL
+  course_basic = Course.objects.get(discipline = discipline, isadvanced = 0)
   try:
-    topic = Topic.objects.filter(name=topic_name)  # Pega o único tópico pelo nome
+    topic = Topic.objects.get(name=topic_name)  # Pega o único tópico pelo nome
   except Topic.DoesNotExist:
     topic = None  # Se não encontrar, o tópico será None (ou você pode exibir uma mensagem de erro no template)
-  
-  lista = List.objects.filter().all()  # Pegar a lista
-  questions = Question.objects.filter(topic__in=topic)  # Filtrar questões para o tópico
+  questions = Question.objects.filter(topic=topic).all()  # Filtrar questões para o tópico
   
   return render(request, "listas.html", {
-      'topic': topic,  # Passando o tópico para o template
-      'course': course[0] if course else None,  # Verifique se o curso existe
-      'lista': lista,
-      'questions': questions,
+    'topic': topic,  # Passando o tópico para o template
+    'discipline': discipline,  # Verifique se o curso existe
+    'questions': questions,
+    'course': course_basic,
   })
 
 

@@ -20,7 +20,7 @@ urlpatterns = [
     path('disciplinas/', views.disciplinas, name="disciplinas"),
     path("disciplinas/<str:discipline_name>", views.Disciplina, name="Disciplina"),
     path("disciplinas/<str:discipline_name>/aulas&listas/", views.aulas_listas_basic),
-    path("disciplinas/<str:course_name>/aulas&listas/<str:topic_name>/",views.listas),
+    path("disciplinas/<str:discipline_name>/aulas&listas/<str:topic_name>/",views.listas),
     path("disciplinas/<str:course_name>/provas/", views.provas),
     path("userCourse/create/", views.createUserCourse),
     path("userCourse/delete/", views.removeUserCourse),
