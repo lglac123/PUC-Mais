@@ -9,26 +9,15 @@
 {# Fazer com que seja a página de uma prova antiga específica #}
 
 {% block main %}
-  <!-- <div class="central" style="font-size: 30px; font-weight: bold; padding-top: 30px">Provas Anteriores</div>
-  <div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">Matéria</div>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; margin: auto; gap: 20px">
-    {% for prova in provas %}
-      <div style="display: flex; align-items: center; flex-direction: column">
-        <p style="font-size: 20px; margin-bottom:10px">{{ prova.year }}.{{ prova.semester }}</p> 
-        <div class="sectionrectangle vertical-align">
-          <embed src="/media/{{ prova.file }}" width="800px" height="2000px" type="application/pdf">
-          <span><a href="/media/{{ prova.file }}" target="_blank" rel="noopener noreferrer">Link da prova</a></span>
-          <iframe style="margin-top: 45px; margin-bottom: 30px; border: 10px solid black; border-radius: 5px" width="200" height="200" 
-          src="{{ prova.video.link}}" title="Projeto PUC+" frameborder="0" allow="accelerometer; 
-          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <span style="margin: 0px">{{ prova.name }}</span>
-        </div>
-      </div>
-    {% endfor %}
-  </div> -->
+  <div class="userbar">
+    <a style="position: absolute; left: 0; padding-left: 15px; text-decoration: none; color:black;" 
+    href="/disciplinas/{{discipline.name}}">&lt;&lt; Voltar</a>
+    <span style="align-items:central; font-weight: bold">Aulas / Listas - {{discipline.name}}</span>
+  </div>
 
   <div class="central" style="font-size: 30px; font-weight: bold; padding-top: 30px">Provas Anteriores</div>
   <div class="central" style="padding-bottom: 30px; font-size: 20px; font-style: italic">{{ course_name }}</div>
+  
   <div class="searchbox central">
     <input id="searchbox" onkeyup="showExamYear()" placeholder="Digite um ano para filtrar">
   </div>
@@ -50,6 +39,9 @@
           </div>
         </div>
       {% endfor %}
+      {% if not provas %}
+        <p style="font-size: 1.3rem; text-align:center;">Não há nenhuma prova cadastrada para essa disciplina.</p>
+      {% endif %}
     </div>
   {% endif %}
 {% endblock %}
