@@ -1,5 +1,5 @@
 html {height: 100%; width: 100%}
-  
+
 body {
   font-family: "Montserrat"; 
   background-color: white;
@@ -412,4 +412,12 @@ ol > li::marker {
   display: flex; 
   align-items: middle; 
   border-right: 2px solid darkgray;
+}
+
+.container-home {
+  background-color: lightgray; 
+  border-radius:20px; 
+  margin: 10px 90px; 
+  padding: 20px 30px; 
+  text-align: center;
 }
