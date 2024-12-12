@@ -19,7 +19,7 @@ h1 {
   position: sticky;
   height: 44px; 
   top: 0; 
-  box-shadow: 0px 1px 4px darkgray;
+  box-shadow: 0px 1px 2px darkgray;
   z-index: 1;
 }
 
@@ -330,12 +330,9 @@ h1 {
 .container-exam {
   display: flex;
   flex-wrap: wrap;
-  background-color:lightgray;
-  border: 3px solid lightgray;
-  border-radius: 20px;
   width: 90%;
-  margin: 20px auto;
-  padding: 30px;
+  margin: 20px;
+  padding: 40px;
   & div {
     font-size: 1rem;
   }
@@ -345,16 +342,14 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   flex: 1 1 1000px;
-  border: 3px solid black;
   width: 1000px;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgb(165, 165, 165);
+  border-radius: 20px;
+  padding: 20px 10px 20px 100px;
+  background-color: lightgray;
   place-items: center;
   align-items: center;
-  margin: 15px auto;
+  margin: 30px;
   text-align: center;
-  box-shadow: 0px 2px 4px darkgray;
 }
 
 
@@ -417,7 +412,7 @@ ol > li::marker {
 .container-home {
   background-color: lightgray; 
   border-radius:20px; 
-  margin: 10px 90px; 
+  margin: 10px 300px; 
   padding: 20px 30px; 
   text-align: center;
 }
