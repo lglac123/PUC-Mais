@@ -14,8 +14,8 @@
     <a style="position: absolute; right: 0; padding-right: 15px; text-decoration: none; color:black;" 
     href="/disciplinas/{{discipline.name}}/provas">Provas &gt;&gt;</a>
   </div>
-
-  <div class="container central" style="display:flex;  flex-direction: column;width: 700px;border:gray">
+<div class="central">
+  <div class="container central" style="display:flex; justify-content: center; flex-direction: column;width: 700px;border:gray">
     {% for topic in topics %}
         <h4 class="card central"style="border: gray;height: 25px; width: 350px; padding: 5px;">{{topic.name}}</h4>
 
@@ -31,4 +31,5 @@
         </div>
     {% endfor %}
   </div>
+</div>
 {% endblock %}
