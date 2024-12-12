@@ -368,7 +368,7 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s cubic-bezier(0.31, 0.09, 0.46, 1.04);
   &:hover {
-    background-color: red;
+    background-color: lightcoral;
   }
 }
 
@@ -382,7 +382,7 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s cubic-bezier(0.31, 0.09, 0.46, 1.04);
   &:hover {
-    background-color: darkslategray;
+    background-color: lightgreen;
   }
 }
 
